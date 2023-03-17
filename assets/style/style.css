@@ -1,85 +1,4 @@
-body {
-  background-color: #f1f1f1;
-  font: 24px/1.8 normal normal "Droid Serif", serif;
-  padding: 20px;
-}
-
-body .main .text {
-  max-width: 620px;
-  min-width: 320px;
-  margin: 0 auto;
-  text-align: center;
-  color: #666;
-}
-
-body .main .text h1 {
-  padding: 10px 20px;
-  background-color: #f4617b;
-  border-radius: 10px;
-  color: #fff;
-  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
-}
-
-body .main .text .wowauthor {
-  font-size: 18px;
-  padding: 10px 0;
-  font-family: "Consolas", monaco, monospace;
-}
-
-body .main .text .wowauthor a {
-  color: #26c544;
-  text-decoration: none;
-  border-bottom: 1px dashed;
-}
-
-body .main .text .output-info {
-  font-size: 24px;
-  margin: 10px 0;
-  text-align: left;
-  font-family: Consolas, monaco, monospace;
-}
-
-body .main .text .output-info ul {
-  list-style-type: none;
-  padding: 0 25px;
-  text-align: center;
-}
-
-body .main .text .output-info ul li {
-  display: block;
-  margin: 15px 0;
-}
-
-body .main .text .output-info ul li b {
-  display: inline-block;
-  border: 4px solid rgba(0, 0, 0, 0.2);
-  border-radius: 10px;
-  width: 60px;
-  text-align: center;
-
-  color: #fff;
-
-  background-color: #40c469;
-  box-shadow: inset 0 4px 5px rgba(255, 255, 255, 0.5),
-    2px 2px 2px rgba(0, 0, 0, 0.2);
-  text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.2);
-}
-
-body .main .text .output-info ul li.y_axis b {
-  background-color: #478ff0;
-}
-
-body .main .text .output-info ul li.z_axis b {
-  background-color: #fdb830;
-}
-
-body .main .text .output-info ul li .value {
-  text-align: right;
-  display: inline-block;
-  width: 140px;
-}
-
-.such_ball_much_wow {
+.ball {
   border-radius: 50%;
   width: 100px;
   height: 100px;
@@ -100,11 +19,11 @@ body .main .text .output-info ul li .value {
   transition: 0.4s opacity ease-in;
 }
 
-.such_ball_much_wow:hover {
+.ball:hover {
   opacity: 0.1;
 }
 
-.such_ball_much_wow img {
+.ball img {
   width: 140%;
   position: relative;
   left: -20px;
@@ -117,65 +36,4 @@ body .main .text .output-info ul li .value {
   font-family: "Comic Sans MS", "Comic Sans";
   color: #efa71e;
   cursor: pointer;
-}
-
-/* Wow Overlay */
-.wow-overlay {
-  background-color: rgba(255, 255, 255, 0.1);
-  font-family: "Comic Sans MS", sans-serif;
-  display: none;
-}
-
-.wow-overlay .wow {
-  color: #ff6a19;
-  position: absolute;
-  z-index: 99;
-  text-shadow: 1px 1px 0px rgba(0, 0, 0, 0);
-}
-
-.wow-overlay .wow.wow-1 {
-  top: 56px;
-  left: 10px;
-  -webkit-transform: rotate(-45deg);
-  -moz-transform: rotate(-45deg);
-}
-
-.wow-overlay .wow.wow-2 {
-  color: #0aa2fa;
-  top: 156px;
-  left: 310px;
-  -webkit-transform: rotate(15deg);
-  -moz-transform: rotate(15deg);
-}
-
-.wow-overlay .wow.wow-3 {
-  color: #0afa48;
-  top: 456px;
-  left: 110px;
-  -webkit-transform: rotate(-30deg);
-  -moz-transform: rotate(-30deg);
-}
-
-.wow-overlay .wow.wow-4 {
-  color: #ff0e16;
-  top: 50%;
-  left: 50%;
-  -webkit-transform: rotate(-25deg);
-  -moz-transform: rotate(-25deg);
-}
-
-.wow-overlay .wow.wow-5 {
-  color: #ffda0e;
-  top: 8%;
-  left: 80%;
-  -webkit-transform: rotate(15deg);
-  -moz-transform: rotate(15deg);
-}
-
-.wow-overlay .wow.wow-6 {
-  color: #ff11d8;
-  top: 90%;
-  left: 310px;
-  -webkit-transform: rotate(-10deg);
-  -moz-transform: rotate(-10deg);
 }
