@@ -1,73 +1,72 @@
-$(document).ready(function () {
-  /********************
-    TEST BRO
-    ********************/
+if ("LinearAccelerationSensor" in window && "Gyroscope" in window) {
+  document.getElementById("moApi").innerHTML = "Generic Sensor API";
 
-  function handleMotionEvent(event) {
-    var x = event.accelerationIncludingGravity.x;
-    var y = event.accelerationIncludingGravity.y;
-    var z = event.accelerationIncludingGravity.z;
-    x = oneDecimal(x);
-    y = oneDecimal(y);
-    z = oneDecimal(z);
-
-    // Show motion info
-    $(".x_axis .value").text(x);
-    $(".y_axis .value").text(y);
-    $(".z_axis .value").text(z);
-
-    // Now animate the .thePlayer
-    var plyr = $(".such_ball_much_wow");
-
-    var winWidth = $(window).width();
-    var winHeight = $(window).height();
-
-    var _pos = {
-      x: winWidth / (100 / toPercentage(x, 1)),
-      y: winHeight / (100 / toPercentage(y, 1)),
-    };
-
-    $(plyr).css({
-      right: _pos.x,
-      top: _pos.y,
-    });
-  }
-
-  window.addEventListener("devicemotion", handleMotionEvent, true);
-
-  function oneDecimal(n) {
-    var number = n;
-    var rounded = Math.round(number * 10) / 10;
-    return rounded;
-  }
-
-  function toPercentage(x, n) {
-    var p = 0;
-    if (n) {
-      p = ((x + 10) / 20) * 100;
-    } else {
-      p = (x + 10) / 20;
+  let lastReadingTimestamp;
+  let accelerometer = new LinearAccelerationSensor();
+  accelerometer.addEventListener("reading", (e) => {
+    if (lastReadingTimestamp) {
+      intervalHandler(
+        Math.round(accelerometer.timestamp - lastReadingTimestamp)
+      );
     }
-    return oneDecimal(p);
+    lastReadingTimestamp = accelerometer.timestamp;
+    accelerationHandler(accelerometer, "moAccel");
+  });
+  accelerometer.start();
+
+  if ("GravitySensor" in window) {
+    let gravity = new GravitySensor();
+    gravity.addEventListener("reading", (e) =>
+      accelerationHandler(gravity, "moAccelGrav")
+    );
+    gravity.start();
   }
 
-  // Animations with the wows!
-  var animations = ["flash"];
-  var animationName = "";
-  // Show the wows
-  $(".wowCircle").on("mouseenter", function () {
-    animationName = animations[randInt(0, animations.length - 1)];
+  let gyroscope = new Gyroscope();
+  gyroscope.addEventListener("reading", (e) =>
+    rotationHandler({
+      alpha: gyroscope.x,
+      beta: gyroscope.y,
+      gamma: gyroscope.z,
+    })
+  );
+  gyroscope.start();
+} else if ("DeviceMotionEvent" in window) {
+  document.getElementById("moApi").innerHTML = "Device Motion API";
 
-    $(".wow-overlay").show();
-    $(".wow-overlay .wow").addClass("animated " + animationName);
-  });
+  var onDeviceMotion = function (eventData) {
+    accelerationHandler(eventData.acceleration, "moAccel");
+    accelerationHandler(eventData.accelerationIncludingGravity, "moAccelGrav");
+    rotationHandler(eventData.rotationRate);
+    intervalHandler(eventData.interval);
+  };
 
-  $(".wowCircle").on("mouseleave", function () {
-    $(".wow-overlay").hide();
-    $(".wow-overlay .wow").removeClass("animated " + animationName);
-  });
+  window.addEventListener("devicemotion", onDeviceMotion, false);
+} else {
+  document.getElementById("moApi").innerHTML =
+    "No Accelerometer & Gyroscope API available";
+}
 
-  function randInt(min, max) {
-    return Math.floor(Math.random() * (max - min + 1)) + min;
-  }
-});
+function accelerationHandler(acceleration, targetId) {
+  var info,
+    xyz = "[X, Y, Z]";
+
+  info = xyz.replace("X", acceleration.x && acceleration.x.toFixed(3));
+  info = info.replace("Y", acceleration.y && acceleration.y.toFixed(3));
+  info = info.replace("Z", acceleration.z && acceleration.z.toFixed(3));
+  document.getElementById(targetId).innerHTML = info;
+}
+
+function rotationHandler(rotation) {
+  var info,
+    xyz = "[X, Y, Z]";
+
+  info = xyz.replace("X", rotation.alpha && rotation.alpha.toFixed(3));
+  info = info.replace("Y", rotation.beta && rotation.beta.toFixed(3));
+  info = info.replace("Z", rotation.gamma && rotation.gamma.toFixed(3));
+  document.getElementById("moRotation").innerHTML = info;
+}
+
+function intervalHandler(interval) {
+  document.getElementById("moInterval").innerHTML = interval;
+}
