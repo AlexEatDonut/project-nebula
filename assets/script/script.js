@@ -50,16 +50,13 @@ if ("LinearAccelerationSensor" in window && "Gyroscope" in window) {
 function accelerationHandler(acceleration, targetId) {
   var info,
     xyz = "[X, Y, Z]";
-  let x = acceleration.x && acceleration.x.toFixed(3);
-  x = oneDecimal(x);
-  let y = acceleration.y && acceleration.y.toFixed(3);
-  y = oneDecimal(y);
-  let z = acceleration.z && acceleration.z.toFixed(3);
-  z = oneDecimal(z);
   info = xyz.replace("X", acceleration.x && acceleration.x.toFixed(3));
   info = info.replace("Y", acceleration.y && acceleration.y.toFixed(3));
   info = info.replace("Z", acceleration.z && acceleration.z.toFixed(3));
   document.getElementById(targetId).innerHTML = info;
+  let x = acceleration.x && acceleration.x.toFixed(0);
+  let y = acceleration.y && acceleration.y.toFixed(0);
+  let z = acceleration.z && acceleration.z.toFixed(0);
 }
 
 function rotationHandler(rotation) {
