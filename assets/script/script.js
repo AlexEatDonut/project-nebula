@@ -57,6 +57,21 @@ function accelerationHandler(acceleration, targetId) {
   let x = acceleration.x && acceleration.x.toFixed(0);
   let y = acceleration.y && acceleration.y.toFixed(0);
   let z = acceleration.z && acceleration.z.toFixed(0);
+
+  var ball = $(".ball");
+
+  var winWidth = $(window).width();
+  var winHeight = $(window).height();
+
+  var _pos = {
+    x: winWidth / (100 * toPercentage(x, 1)),
+    y: winHeight / (100 * toPercentage(y, 1)),
+  };
+
+  $(ball).css({
+    right: _pos.x,
+    top: _pos.y,
+  });
 }
 
 function rotationHandler(rotation) {
@@ -72,18 +87,3 @@ function rotationHandler(rotation) {
 function intervalHandler(interval) {
   document.getElementById("moInterval").innerHTML = interval;
 }
-
-var ball = $(".ball");
-
-var winWidth = $(window).width();
-var winHeight = $(window).height();
-
-var _pos = {
-  x: winWidth / (100 * toPercentage(x, 1)),
-  y: winHeight / (100 * toPercentage(y, 1)),
-};
-
-$(ball).css({
-  right: _pos.x,
-  top: _pos.y,
-});
