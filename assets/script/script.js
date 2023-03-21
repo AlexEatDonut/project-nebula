@@ -50,13 +50,16 @@ if ("LinearAccelerationSensor" in window && "Gyroscope" in window) {
 function accelerationHandler(acceleration, targetId) {
   var info,
     xyz = "[X, Y, Z]";
-  info = xyz.replace("X", acceleration.x && acceleration.x.toFixed(3));
-  info = info.replace("Y", acceleration.y && acceleration.y.toFixed(3));
-  info = info.replace("Z", acceleration.z && acceleration.z.toFixed(3));
-  document.getElementById(targetId).innerHTML = info;
   let x = acceleration.x && acceleration.x.toFixed(0);
   let y = acceleration.y && acceleration.y.toFixed(0);
   let z = acceleration.z && acceleration.z.toFixed(0);
+  info = xyz.replace("X", x);
+  info = info.replace("Y", y);
+  info = info.replace("Z", z);
+  // info = xyz.replace("X", acceleration.x && acceleration.x.toFixed(3));
+  // info = info.replace("Y", acceleration.y && acceleration.y.toFixed(3));
+  // info = info.replace("Z", acceleration.z && acceleration.z.toFixed(3));
+  document.getElementById(targetId).innerHTML = info;
 
   var ball = $(".ball");
 
