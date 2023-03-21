@@ -35,9 +35,9 @@ if ("LinearAccelerationSensor" in window && "Gyroscope" in window) {
   document.getElementById("moApi").innerHTML = "Device Motion API";
 
   var onDeviceMotion = function (eventData) {
-    accelerationHandler(eventData.acceleration, "moAccel");
+    // accelerationHandler(eventData.acceleration, "moAccel");
     accelerationHandler(eventData.accelerationIncludingGravity, "moAccelGrav");
-    rotationHandler(eventData.rotationRate);
+    // rotationHandler(eventData.rotationRate);
     intervalHandler(eventData.interval);
   };
 
@@ -60,8 +60,8 @@ function accelerationHandler(acceleration, targetId) {
   var winHeight = $(window).height();
 
   var _pos = {
-    x: winWidth * (100 / toPercentage(x, 1)),
-    y: winHeight * (100 / toPercentage(y, 1)),
+    x: winWidth * (100 * toPercentage(x, 1)),
+    y: winHeight * (100 * toPercentage(y, 1)),
   };
 
   $(ball).css({
@@ -85,7 +85,7 @@ function rotationHandler(rotation) {
   info = xyz.replace("X", rotation.alpha && rotation.alpha.toFixed(3));
   info = info.replace("Y", rotation.beta && rotation.beta.toFixed(3));
   info = info.replace("Z", rotation.gamma && rotation.gamma.toFixed(3));
-  document.getElementById("moRotation").innerHTML = info;
+  // document.getElementById("moRotation").innerHTML = info;
 }
 
 function intervalHandler(interval) {
