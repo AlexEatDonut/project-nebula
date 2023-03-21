@@ -9,13 +9,13 @@ var $layer_0 = $(".layer-0"),
   container_h = $container.height();
 
 $(window).on("mousemove.parallax", function (event) {
-  var pos_x = event.pageX,
-    pos_y = event.pageY,
+  var p_pos_x = event.pageX,
+    p_pos_y = event.pageY,
     left = 0,
     top = 0;
 
-  left = container_w / 2 - pos_x;
-  top = container_h / 2 - pos_y;
+  left = container_w / 2 - p_pos_x;
+  top = container_h / 2 - p_pos_y;
 
   TweenMax.to($x_axis, 1, {
     css: {
