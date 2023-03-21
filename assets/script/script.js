@@ -82,8 +82,8 @@ var winWidth = $(window).width();
 var winHeight = $(window).height();
 
 var _pos = {
-  x: winWidth / (100 / toPercentage(x, 1)),
-  y: winHeight / (100 / toPercentage(y, 1)),
+  x: winWidth / (100 * toPercentage(x, 1)),
+  y: winHeight / (100 * toPercentage(y, 1)),
 };
 
 $(ball).css({
