@@ -19,10 +19,6 @@
   transition: 0.4s opacity ease-in;
 }
 
-.ball:hover {
-  opacity: 0.1;
-}
-
 .ball img {
   width: 140%;
   position: relative;
