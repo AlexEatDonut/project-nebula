@@ -69,8 +69,8 @@ function accelerationHandler(acceleration, targetId) {
     top: s_pos.y,
   });
 
-  info = xyz.replace("X", _pos.x);
-  info = info.replace("Y", _pos.y);
+  info = xyz.replace("X", s_pos.x);
+  info = info.replace("Y", s_pos.y);
   info = info.replace("Z", z);
   // info = xyz.replace("X", acceleration.x && acceleration.x.toFixed(3));
   // info = info.replace("Y", acceleration.y && acceleration.y.toFixed(3));
