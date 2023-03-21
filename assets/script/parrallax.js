@@ -1,5 +1,4 @@
-// code pen
-var $layer_0 = $(".layer-0"),
+let $layer_0 = $(".layer-0"),
   $layer_1 = $(".layer-1"),
   $layer_2 = $(".layer-2"),
   $x_axis = $("#x-axis"),
@@ -9,7 +8,14 @@ var $layer_0 = $(".layer-0"),
   container_h = $container.height();
 
 $(window).on("mousemove.parallax", function (event) {
-  var p_pos_x = event.pageX,
+  if ($(window).width() < 580) {
+    (left = 0), (top = 0);
+
+    left = container_w / 2 - s_pos.x;
+    top = container_h / 2 - s_pos.y;
+  } else {
+  }
+  let p_pos_x = event.pageX,
     p_pos_y = event.pageY,
     left = 0,
     top = 0;

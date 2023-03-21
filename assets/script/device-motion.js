@@ -54,12 +54,12 @@ function accelerationHandler(acceleration, targetId) {
   let y = acceleration.y && acceleration.y.toFixed(0);
   let z = acceleration.z && acceleration.z.toFixed(0);
 
-  var ball = $(".ball");
+  let ball = $(".ball");
 
-  var winWidth = $(window).width();
-  var winHeight = $(window).height();
+  let winWidth = $(window).width();
+  let winHeight = $(window).height();
 
-  var s_pos = {
+  let s_pos = {
     x: winWidth / (100 / toPercentage(x, 1)),
     y: winHeight / (100 / toPercentage(y, 1)),
   };
@@ -79,7 +79,7 @@ function accelerationHandler(acceleration, targetId) {
 }
 
 function rotationHandler(rotation) {
-  var info,
+  let info,
     xyz = "[X, Y, Z]";
 
   info = xyz.replace("X", rotation.alpha && rotation.alpha.toFixed(3));
@@ -91,4 +91,3 @@ function rotationHandler(rotation) {
 function intervalHandler(interval) {
   document.querySelector("#moInterval").innerHTML = interval;
 }
-é;
