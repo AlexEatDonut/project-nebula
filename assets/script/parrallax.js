@@ -12,8 +12,9 @@ $(window).on("mousemove.parallax", function (event) {
     left = 0;
     top = 0;
 
-    left = container_w / 2 - s_pos.x;
-    top = container_h / 2 - s_pos.y;
+    left = container_w / 2 - s_pos_x;
+    top = container_h / 2 - s_pos_y;
+    console.log(s_pos_x, s_pos_y);
   } else {
   }
   let p_pos_x = event.pageX,

@@ -61,7 +61,7 @@ function accelerationHandler(acceleration, targetId) {
 
   let s_pos_x = winWidth / (100 / toPercentage(x, 1));
   let s_pos_y = winHeight / (100 / toPercentage(y, 1));
-
+  console.log(s_pos_x, s_pos_y);
   TweenMax.to(ball, 1, {
     css: {
       right: s_pos_x,
@@ -71,8 +71,7 @@ function accelerationHandler(acceleration, targetId) {
     //   (info = xyz.replace("X", s_pos.x));
     // info = info.replace("Y", s_pos.y);
     // info = info.replace("Z", z);
-    console.log(s_pos_x, x_pos_y);
-  info = xyz.replace("X", acceleration.x && acceleration.x.toFixed(3));
+    (info = xyz.replace("X", acceleration.x && acceleration.x.toFixed(3)));
   info = info.replace("Y", acceleration.y && acceleration.y.toFixed(3));
   info = info.replace("Z", acceleration.z && acceleration.z.toFixed(3));
   document.getElementById(targetId).innerHTML = info;
