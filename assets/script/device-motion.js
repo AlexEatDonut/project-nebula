@@ -70,12 +70,13 @@ function accelerationHandler(acceleration, targetId) {
       top: s_pos.y,
     },
   }),
-    (info = xyz.replace("X", s_pos.x));
-  info = info.replace("Y", s_pos.y);
-  info = info.replace("Z", z);
-  // info = xyz.replace("X", acceleration.x && acceleration.x.toFixed(3));
-  // info = info.replace("Y", acceleration.y && acceleration.y.toFixed(3));
-  // info = info.replace("Z", acceleration.z && acceleration.z.toFixed(3));
+    //   (info = xyz.replace("X", s_pos.x));
+    // info = info.replace("Y", s_pos.y);
+    // info = info.replace("Z", z);
+    console.log(s_pos.x, x_pos.y);
+  info = xyz.replace("X", acceleration.x && acceleration.x.toFixed(3));
+  info = info.replace("Y", acceleration.y && acceleration.y.toFixed(3));
+  info = info.replace("Z", acceleration.z && acceleration.z.toFixed(3));
   document.getElementById(targetId).innerHTML = info;
 }
 
