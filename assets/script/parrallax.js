@@ -197,14 +197,6 @@ function accelerationHandler(acceleration, targetId) {
     ease: Expo.easeOut,
     overwrite: "all",
   });
-
-  TweenMax.to($layer_0, 10, {
-    css: {
-      transform: "rotate(" + (z_acceleration / 10) * 90 + "deg)",
-    },
-    ease: Expo.easeOut,
-    overwrite: "none",
-  });
 }
 
 function rotationHandler(rotation) {
@@ -217,6 +209,14 @@ function rotationHandler(rotation) {
   info = info.replace("Y", x_rotation);
   info = info.replace("Z", z_rotation);
   document.getElementById("moRotation").innerHTML = info;
+
+  TweenMax.to($layer_1, 1, {
+    css: {
+      transform: "rotate(" + (z_rotation / 10) * 90 + "deg)",
+    },
+    ease: Expo.easeOut,
+    overwrite: "none",
+  });
 }
 
 function intervalHandler(interval) {
