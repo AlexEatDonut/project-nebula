@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="./assets/style/style.css" rel="stylesheet" type="text/css" />
+    <title>Teufort Parrallaxd</title>
+  </head>
+  <body>
+    <img
+      src="https://remipeautre.fr/assets/img/rplogo1.svg"
+      style="height: 100px"
+    />
+    <h1>teufort_parrallaxd</h1>
+    <p>the project doesn't have a proper page yet</p>
+
+    <table>
+      <tr>
+        <td>API used</td>
+        <td id="moApi"></td>
+      </tr>
+      <tr>
+        <td>linear acceleration (excl. gravity)</td>
+        <td id="moAccel"></td>
+      </tr>
+      <tr>
+        <td>acceleration incl. gravity</td>
+        <td id="moAccelGrav"></td>
+      </tr>
+      <tr>
+        <td>rotation rate</td>
+        <td id="moRotation"></td>
+      </tr>
+      <tr>
+        <td>interval (ms)</td>
+        <td id="moInterval"></td>
+      </tr>
+    </table>
+
+    <div class="ball"></div>
+    <!-- <iframe
+      width="100%"
+      height="300px"
+      allowfullscreen
+      frameborder="0"
+      src="//storage.googleapis.com/vrview/index.html?image=//storage.googleapis.com/vrview/examples/coral.jpg&
+    is_stereo=true"
+    >
+    </iframe> -->
+
+    <!-- CODE PEN -->
+    <div id="background" class="layer-0"></div>
+    <div id="x-axis" class="axis"></div>
+    <div id="y-axis" class="axis"></div>
+    <div id="item-1" class="item layer-1"></div>
+    <div id="item-2" class="item layer-2"></div>
+  </body>
+  <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+  <script
+    type="text/javascript"
+    src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.3/TweenMax.min.js"
+  ></script>
+  <script src="./assets/script/device-motion.js"></script>
+  <script src="./assets/script/parrallax.js"></script>
+</html>
