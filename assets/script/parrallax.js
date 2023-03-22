@@ -43,7 +43,7 @@ if ("LinearAccelerationSensor" in window && "Gyroscope" in window) {
   document.getElementById("moApi").innerHTML = "Device Motion API";
 
   var onDeviceMotion = function (eventData) {
-    accelerationHandler(eventData.acceleration, "moAccel");
+    // accelerationHandler(eventData.acceleration, "moAccel");
     accelerationHandler(eventData.accelerationIncludingGravity, "moAccelGrav");
     rotationHandler(eventData.rotationRate);
     intervalHandler(eventData.interval);
@@ -157,6 +157,54 @@ function accelerationHandler(acceleration, targetId) {
       top: x_acceleration,
     },
   });
+  TweenMax.to($x_axis, 1, {
+    css: {
+      transform: "translateX(" + y_acceleration * -1 + "px)",
+    },
+    ease: Expo.easeOut,
+    overwrite: "all",
+  });
+  TweenMax.to($y_axis, 1, {
+    css: {
+      transform: "translateY(" + x_acceleration * -1 + "px)",
+    },
+    ease: Expo.easeOut,
+    overwrite: "all",
+  });
+
+  TweenMax.to($layer_2, 1, {
+    css: {
+      transform:
+        "translateX(" +
+        y_acceleration * 40 +
+        "px) translateY(" +
+        x_acceleration * 40 +
+        "px)",
+    },
+    ease: Expo.easeOut,
+    overwrite: "all",
+  });
+
+  TweenMax.to($layer_1, 1, {
+    css: {
+      transform:
+        "translateX(" +
+        y_acceleration * 50 +
+        "px) translateY(" +
+        x_acceleration * 50 +
+        "px)",
+    },
+    ease: Expo.easeOut,
+    overwrite: "all",
+  });
+
+  TweenMax.to($layer_0, 10, {
+    css: {
+      transform: "rotate(" + (z_acceleration / 10) * 90 + "deg)",
+    },
+    ease: Expo.easeOut,
+    overwrite: "none",
+  });
 }
 
 function rotationHandler(rotation) {
@@ -169,54 +217,6 @@ function rotationHandler(rotation) {
   info = info.replace("Y", x_rotation);
   info = info.replace("Z", z_rotation);
   document.getElementById("moRotation").innerHTML = info;
-  TweenMax.to($x_axis, 1, {
-    css: {
-      transform: "translateX(" + y_rotation * -1 + "px)",
-    },
-    ease: Expo.easeOut,
-    overwrite: "all",
-  });
-  TweenMax.to($y_axis, 1, {
-    css: {
-      transform: "translateY(" + x_rotation * -1 + "px)",
-    },
-    ease: Expo.easeOut,
-    overwrite: "all",
-  });
-
-  TweenMax.to($layer_2, 1, {
-    css: {
-      transform:
-        "translateX(" +
-        y_rotation * 40 +
-        "px) translateY(" +
-        x_rotation * 40 +
-        "px)",
-    },
-    ease: Expo.easeOut,
-    overwrite: "all",
-  });
-
-  TweenMax.to($layer_1, 1, {
-    css: {
-      transform:
-        "translateX(" +
-        y_rotation * 50 +
-        "px) translateY(" +
-        x_rotation * 50 +
-        "px)",
-    },
-    ease: Expo.easeOut,
-    overwrite: "all",
-  });
-
-  TweenMax.to($layer_0, 10, {
-    css: {
-      transform: "rotate(" + (z_rotation / 10) * 90 + "deg)",
-    },
-    ease: Expo.easeOut,
-    overwrite: "none",
-  });
 }
 
 function intervalHandler(interval) {
