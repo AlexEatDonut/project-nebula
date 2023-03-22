@@ -64,6 +64,8 @@ let $layer_0 = $(".layer-0"),
   $y_axis = $("#y-axis"),
   $ball = $(".ball"),
   $container = $("body"),
+  layer1_speed = -12,
+  layer2_speed = -8,
   container_w = $container.width(),
   container_h = $container.height(),
   p_left = 0,
@@ -72,8 +74,6 @@ let $layer_0 = $(".layer-0"),
 let winWidth = $(window).width();
 let winHeight = $(window).height();
 
-alert($.percentage(100, winWidth));
-
 // let s_pos_x = winWidth / (100 / toPercentage(x, 1));
 // let s_pos_y = winHeight / (100 / toPercentage(y, 1));
 
@@ -81,12 +81,6 @@ let s_pos_x = $.percentage(100, winWidth);
 let s_pos_y = $.percentage(100, winWidth);
 
 $(window).on("mousemove.parallax", function (event) {
-  if ($(window).width() < 580) {
-    p_left = container_w / 2 - s_pos_x;
-    p_top = container_h / 2 - s_pos_y;
-    console.log(s_pos_x, s_pos_y);
-  } else {
-  }
   let p_pos_x = event.pageX,
     p_pos_y = event.pageY,
     p_left = container_w / 2 - p_pos_x;
@@ -176,9 +170,9 @@ function accelerationHandler(acceleration, targetId) {
     css: {
       transform:
         "translateX(" +
-        x_acceleration * -8 +
+        x_acceleration * layer2_speed +
         "vw) translateY(" +
-        y_acceleration * -8 +
+        y_acceleration * layer2_speed +
         "vh)",
     },
     ease: Expo.easeOut,
@@ -189,9 +183,9 @@ function accelerationHandler(acceleration, targetId) {
     css: {
       transform:
         "translateX(" +
-        x_acceleration * -10 +
+        x_acceleration * layer1_speed +
         "vw) translateY(" +
-        y_acceleration * -10 +
+        y_acceleration * layer1_speed +
         "vh)",
     },
     ease: Expo.easeOut,
