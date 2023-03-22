@@ -71,6 +71,8 @@ let $layer_0 = $(".layer-0"),
   p_left = 0,
   p_top = 0;
 
+const speed_axis = [-6, -8, -10, -12];
+
 let winWidth = $(window).width();
 let winHeight = $(window).height();
 
@@ -153,14 +155,14 @@ function accelerationHandler(acceleration, targetId) {
   });
   TweenMax.to($x_axis, 1, {
     css: {
-      transform: "translateX(" + x_acceleration * -10 + "vw)",
+      transform: "translateX(" + x_acceleration * speed_axis[2] + "vw)",
     },
     ease: Expo.easeOut,
     overwrite: "all",
   });
   TweenMax.to($y_axis, 1, {
     css: {
-      transform: "translateY(" + y_acceleration * -10 + "vh)",
+      transform: "translateY(" + y_acceleration * speed_axis[1] + "vh)",
     },
     ease: Expo.easeOut,
     overwrite: "all",
@@ -170,9 +172,9 @@ function accelerationHandler(acceleration, targetId) {
     css: {
       transform:
         "translateX(" +
-        x_acceleration * layer2_speed +
+        x_acceleration * speed_axis[2] +
         "vw) translateY(" +
-        y_acceleration * -layer2_speed +
+        y_acceleration * -speed_axis[1] +
         "vh)",
     },
     ease: Expo.easeOut,
@@ -183,9 +185,9 @@ function accelerationHandler(acceleration, targetId) {
     css: {
       transform:
         "translateX(" +
-        x_acceleration * layer1_speed +
+        x_acceleration * speed_axis[1] +
         "vw) translateY(" +
-        y_acceleration * -layer1_speed +
+        y_acceleration * -speed_axis[1] +
         "vh)",
     },
     ease: Expo.easeOut,
