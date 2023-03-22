@@ -165,16 +165,20 @@ function rotationHandler(rotation) {
   x_rotation = rotation.alpha && rotation.alpha.toFixed(2);
   y_rotation = rotation.beta && rotation.beta.toFixed(2);
   z_rotation = rotation.gamma && rotation.gamma.toFixed(2);
-  info = xyz.replace("X", x_rotation);
-  info = info.replace("Y", y_rotation);
-  info = info.replace(
-    "Z",
-    (z_rotation = rotation.gamma && rotation.gamma.toFixed(2))
-  );
+  info = xyz.replace("X", y_rotation);
+  info = info.replace("Y", x_rotation);
+  info = info.replace("Z", z_rotation);
   document.getElementById("moRotation").innerHTML = info;
+  TweenMax.to($x_axis, 1, {
+    css: {
+      transform: "translateX(" + y_rotation * -1 + "px)",
+    },
+    ease: Expo.easeOut,
+    overwrite: "all",
+  });
   TweenMax.to($y_axis, 1, {
     css: {
-      transform: "translateY(" + z_rotation * -1 + "px)",
+      transform: "translateY(" + x_rotation * -1 + "px)",
     },
     ease: Expo.easeOut,
     overwrite: "all",
@@ -184,9 +188,9 @@ function rotationHandler(rotation) {
     css: {
       transform:
         "translateX(" +
-        y_rotation / 12 +
+        y_rotation * 40 +
         "px) translateY(" +
-        z_rotation / 6 +
+        x_rotation * 40 +
         "px)",
     },
     ease: Expo.easeOut,
@@ -197,9 +201,9 @@ function rotationHandler(rotation) {
     css: {
       transform:
         "translateX(" +
-        y_rotation / 8 +
+        y_rotation * 50 +
         "px) translateY(" +
-        z_rotation / 4 +
+        x_rotation * 50 +
         "px)",
     },
     ease: Expo.easeOut,
@@ -208,7 +212,7 @@ function rotationHandler(rotation) {
 
   TweenMax.to($layer_0, 10, {
     css: {
-      transform: "rotate(" + (x_rotation / 10) * 90 + "deg)",
+      transform: "rotate(" + (z_rotation / 10) * 90 + "deg)",
     },
     ease: Expo.easeOut,
     overwrite: "none",
