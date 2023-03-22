@@ -138,9 +138,9 @@ $(window).on("mousemove.parallax", function (event) {
 function accelerationHandler(acceleration, targetId) {
   let info,
     xyz = "[X, Y, Z]";
-  x_acceleration = acceleration.x && acceleration.x.toFixed(0);
-  y_acceleration = acceleration.y && acceleration.y.toFixed(0);
-  z_acceleration = acceleration.z && acceleration.z.toFixed(0);
+  x_acceleration = acceleration.x && acceleration.x.toFixed(2);
+  y_acceleration = acceleration.y && acceleration.y.toFixed(2);
+  z_acceleration = acceleration.z && acceleration.z.toFixed(2);
 
   // info = xyz.replace("X", s_pos.x);
   // info = info.replace("Y", s_pos.y);
@@ -162,14 +162,14 @@ function accelerationHandler(acceleration, targetId) {
 function rotationHandler(rotation) {
   let info,
     xyz = "[X, Y, Z]";
-  x_rotation = rotation.alpha && rotation.alpha.toFixed(0);
-  y_rotation = rotation.beta && rotation.beta.toFixed(0);
-  z_rotation = rotation.gamma && rotation.gamma.toFixed(0);
+  x_rotation = rotation.alpha && rotation.alpha.toFixed(2);
+  y_rotation = rotation.beta && rotation.beta.toFixed(2);
+  z_rotation = rotation.gamma && rotation.gamma.toFixed(2);
   info = xyz.replace("X", x_rotation);
   info = info.replace("Y", y_rotation);
   info = info.replace(
     "Z",
-    (z_rotation = rotation.gamma && rotation.gamma.toFixed(0))
+    (z_rotation = rotation.gamma && rotation.gamma.toFixed(2))
   );
   document.getElementById("moRotation").innerHTML = info;
 }
