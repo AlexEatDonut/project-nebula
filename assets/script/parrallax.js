@@ -142,6 +142,13 @@ function accelerationHandler(acceleration, targetId) {
   y = acceleration.y && acceleration.y.toFixed(0);
   z = acceleration.z && acceleration.z.toFixed(0);
 
+  // info = xyz.replace("X", s_pos.x);
+  // info = info.replace("Y", s_pos.y);
+  // info = info.replace("Z", z);
+  info = xyz.replace("X", acceleration.x && acceleration.x.toFixed(3));
+  info = info.replace("Y", acceleration.y && acceleration.y.toFixed(3));
+  info = info.replace("Z", acceleration.z && acceleration.z.toFixed(3));
+  document.getElementById(targetId).innerHTML = info;
   console.log(s_pos_x, s_pos_y);
   TweenMax.to(ball, 1, {
     css: {
@@ -149,14 +156,7 @@ function accelerationHandler(acceleration, targetId) {
       right: s_pos_x,
       top: s_pos_y,
     },
-  }),
-    //   (info = xyz.replace("X", s_pos.x));
-    // info = info.replace("Y", s_pos.y);
-    // info = info.replace("Z", z);
-    (info = xyz.replace("X", acceleration.x && acceleration.x.toFixed(3)));
-  info = info.replace("Y", acceleration.y && acceleration.y.toFixed(3));
-  info = info.replace("Z", acceleration.z && acceleration.z.toFixed(3));
-  document.getElementById(targetId).innerHTML = info;
+  });
 }
 
 function rotationHandler(rotation) {
