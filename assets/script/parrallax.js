@@ -107,7 +107,7 @@ $(window).on("mousemove.parallax", function (event) {
   TweenMax.to($layer_2, 1, {
     css: {
       transform:
-        "translateX(" + p_left / 12 + "px) translateY(" + p_top / 6 + "px)",
+        "translateX(" + p_left / 24 + "px) translateY(" + p_top / 12 + "px)",
     },
     ease: Expo.easeOut,
     overwrite: "all",
@@ -116,7 +116,7 @@ $(window).on("mousemove.parallax", function (event) {
   TweenMax.to($layer_1, 1, {
     css: {
       transform:
-        "translateX(" + p_left / 8 + "px) translateY(" + p_top / 4 + "px)",
+        "translateX(" + p_left / 20 + "px) translateY(" + p_top / 10 + "px)",
     },
     ease: Expo.easeOut,
     overwrite: "all",
