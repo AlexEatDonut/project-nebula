@@ -174,7 +174,7 @@ function rotationHandler(rotation) {
   document.getElementById("moRotation").innerHTML = info;
   TweenMax.to($y_axis, 1, {
     css: {
-      transform: "translateY(" + y_rotation * -1 + "px)",
+      transform: "translateY(" + z_rotation * -1 + "px)",
     },
     ease: Expo.easeOut,
     overwrite: "all",
@@ -184,9 +184,9 @@ function rotationHandler(rotation) {
     css: {
       transform:
         "translateX(" +
-        x_rotation / 12 +
+        y_rotation / 12 +
         "px) translateY(" +
-        y_rotation / 6 +
+        z_rotation / 6 +
         "px)",
     },
     ease: Expo.easeOut,
@@ -197,9 +197,9 @@ function rotationHandler(rotation) {
     css: {
       transform:
         "translateX(" +
-        x_rotation / 8 +
+        y_rotation / 8 +
         "px) translateY(" +
-        y_rotation / 4 +
+        z_rotation / 4 +
         "px)",
     },
     ease: Expo.easeOut,
@@ -208,7 +208,7 @@ function rotationHandler(rotation) {
 
   TweenMax.to($layer_0, 10, {
     css: {
-      transform: "rotate(" + z_rotation / 200 + "deg)",
+      transform: "rotate(" + (x_rotation / 10) * 90 + "deg)",
     },
     ease: Expo.easeOut,
     overwrite: "none",
