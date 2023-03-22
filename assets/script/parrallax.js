@@ -159,14 +159,14 @@ function accelerationHandler(acceleration, targetId) {
   });
   TweenMax.to($x_axis, 1, {
     css: {
-      transform: "translateX(" + x_acceleration * 10 + "vw)",
+      transform: "translateX(" + x_acceleration * -10 + "vw)",
     },
     ease: Expo.easeOut,
     overwrite: "all",
   });
   TweenMax.to($y_axis, 1, {
     css: {
-      transform: "translateY(" + y_acceleration * 10 + "vh)",
+      transform: "translateY(" + y_acceleration * -10 + "vh)",
     },
     ease: Expo.easeOut,
     overwrite: "all",
@@ -176,9 +176,9 @@ function accelerationHandler(acceleration, targetId) {
     css: {
       transform:
         "translateX(" +
-        x_acceleration * 40 +
+        x_acceleration * -8 +
         "vw) translateY(" +
-        y_acceleration * 40 +
+        y_acceleration * -8 +
         "vh)",
     },
     ease: Expo.easeOut,
@@ -189,9 +189,9 @@ function accelerationHandler(acceleration, targetId) {
     css: {
       transform:
         "translateX(" +
-        x_acceleration * 10 +
+        x_acceleration * -10 +
         "vw) translateY(" +
-        y_acceleration * 10 +
+        y_acceleration * -10 +
         "vh)",
     },
     ease: Expo.easeOut,
