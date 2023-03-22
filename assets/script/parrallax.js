@@ -195,7 +195,7 @@ function accelerationHandler(acceleration, targetId) {
         "vh)",
     },
     ease: Expo.easeOut,
-    overwrite: "all",
+    overwrite: "none",
   });
 }
 
@@ -210,11 +210,12 @@ function rotationHandler(rotation) {
   info = info.replace("Z", z_rotation);
   document.getElementById("moRotation").innerHTML = info;
 
-  TweenMax.to($layer_1, 1, {
-    css: {
-      transform: "rotate(" + (z_rotation / 10) * -180 + "deg)",
-    },
-  });
+  // TweenMax.to($layer_1, 1, {
+  //   css: {
+  //     transform: "rotate(" + (z_rotation / 10) * -180 + "deg)",
+  //   },
+  //   overwrite: "none",
+  // });
 }
 
 function intervalHandler(interval) {
