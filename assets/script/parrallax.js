@@ -147,14 +147,14 @@ function accelerationHandler(acceleration, targetId) {
   // info = info.replace("Z", z);
   info = xyz.replace("X", x_acceleration);
   info = info.replace("Y", y_acceleration);
-  info = info.replace("Z", y_acceleration);
+  info = info.replace("Z", z_acceleration);
   document.getElementById(targetId).innerHTML = info;
   console.log(s_pos_x, s_pos_y);
   TweenMax.to($ball, 1, {
     css: {
-      transform: "translateX(" + s_pos_x * -1 + "px)",
-      right: s_pos_x,
-      top: s_pos_y,
+      transform: "translateX(" + y_acceleration * -1 + "px)",
+      right: y_acceleration,
+      top: x_acceleration,
     },
   });
 }
