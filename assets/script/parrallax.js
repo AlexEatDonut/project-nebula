@@ -172,6 +172,47 @@ function rotationHandler(rotation) {
     (z_rotation = rotation.gamma && rotation.gamma.toFixed(2))
   );
   document.getElementById("moRotation").innerHTML = info;
+  TweenMax.to($y_axis, 1, {
+    css: {
+      transform: "translateY(" + y_rotation * -1 + "px)",
+    },
+    ease: Expo.easeOut,
+    overwrite: "all",
+  });
+
+  TweenMax.to($layer_2, 1, {
+    css: {
+      transform:
+        "translateX(" +
+        x_rotation / 12 +
+        "px) translateY(" +
+        y_rotation / 6 +
+        "px)",
+    },
+    ease: Expo.easeOut,
+    overwrite: "all",
+  });
+
+  TweenMax.to($layer_1, 1, {
+    css: {
+      transform:
+        "translateX(" +
+        x_rotation / 8 +
+        "px) translateY(" +
+        y_rotation / 4 +
+        "px)",
+    },
+    ease: Expo.easeOut,
+    overwrite: "all",
+  });
+
+  TweenMax.to($layer_0, 10, {
+    css: {
+      transform: "rotate(" + z_rotation / 200 + "deg)",
+    },
+    ease: Expo.easeOut,
+    overwrite: "none",
+  });
 }
 
 function intervalHandler(interval) {
