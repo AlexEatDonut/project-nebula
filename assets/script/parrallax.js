@@ -150,7 +150,7 @@ function accelerationHandler(acceleration, targetId) {
   info = info.replace("Z", y_acceleration);
   document.getElementById(targetId).innerHTML = info;
   console.log(s_pos_x, s_pos_y);
-  TweenMax.to(ball, 1, {
+  TweenMax.to($ball, 1, {
     css: {
       transform: "translateX(" + s_pos_x * -1 + "px)",
       right: s_pos_x,
