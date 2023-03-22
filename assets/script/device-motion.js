@@ -64,12 +64,13 @@ function accelerationHandler(acceleration, targetId) {
     y: winHeight / (100 / toPercentage(y, 1)),
   };
 
-  $(ball).css({
-    right: s_pos.x,
-    top: s_pos.y,
-  });
-
-  info = xyz.replace("X", s_pos.x);
+  TweenMax.to(ball, 1, {
+    css: {
+      right: s_pos.x,
+      top: s_pos.y,
+    },
+  }),
+    (info = xyz.replace("X", s_pos.x));
   info = info.replace("Y", s_pos.y);
   info = info.replace("Z", z);
   // info = xyz.replace("X", acceleration.x && acceleration.x.toFixed(3));

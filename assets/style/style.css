@@ -1,6 +1,9 @@
 html,
 body {
   background-color: white;
+  height: 100%;
+  margin: 0;
+  overflow: hidden;
 }
 .ball {
   border-radius: 50%;
@@ -17,21 +20,7 @@ body {
 
   margin-left: -50px;
   margin-top: -50px;
-
-  -webkit-transition: 0.4s opacity ease-in;
-  -moz-transition: 0.4s opacity ease-in;
-  transition: 0.4s opacity ease-in;
 }
-
-.ball img {
-  width: 140%;
-  position: relative;
-  left: -20px;
-  height: auto;
-  display: block;
-}
-
-/* CODEPEN */
 
 .axis {
   background-color: rgba(0, 0, 0, 0.2);
@@ -39,7 +28,7 @@ body {
   z-index: 100;
 }
 
-.planet {
+.item {
   background-size: cover;
   left: 50%;
   position: absolute;
@@ -71,14 +60,14 @@ body {
   height: 1px;
 }
 
-#planet-1 {
+#item-1 {
   height: 150px;
   width: 150px;
   background-color: blue;
   z-index: 20;
 }
 
-#planet-2 {
+#item-2 {
   height: 200px;
   width: 200px;
   background-color: red;

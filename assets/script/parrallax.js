@@ -9,7 +9,8 @@ let $layer_0 = $(".layer-0"),
 
 $(window).on("mousemove.parallax", function (event) {
   if ($(window).width() < 580) {
-    (left = 0), (top = 0);
+    left = 0;
+    top = 0;
 
     left = container_w / 2 - s_pos.x;
     top = container_h / 2 - s_pos.y;
@@ -50,7 +51,7 @@ $(window).on("mousemove.parallax", function (event) {
 
   TweenMax.to($layer_1, 1, {
     css: {
-      transform: "translateX(" + left / 4 + "px) translateY(" + top / 2 + "px)",
+      transform: "translateX(" + left / 8 + "px) translateY(" + top / 4 + "px)",
     },
     ease: Expo.easeOut,
     overwrite: "all",
