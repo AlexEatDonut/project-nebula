@@ -212,10 +212,8 @@ function rotationHandler(rotation) {
 
   TweenMax.to($layer_1, 1, {
     css: {
-      transform: "rotate(" + (z_rotation / 10) * 90 + "deg)",
+      transform: "rotate(" + (z_rotation / 10) * -180 + "deg)",
     },
-    ease: Expo.easeOut,
-    overwrite: "none",
   });
 }
 
