@@ -172,7 +172,7 @@ function accelerationHandler(acceleration, targetId) {
         "translateX(" +
         x_acceleration * layer2_speed +
         "vw) translateY(" +
-        y_acceleration * layer2_speed +
+        y_acceleration * -layer2_speed +
         "vh)",
     },
     ease: Expo.easeOut,
@@ -185,7 +185,7 @@ function accelerationHandler(acceleration, targetId) {
         "translateX(" +
         x_acceleration * layer1_speed +
         "vw) translateY(" +
-        y_acceleration * layer1_speed +
+        y_acceleration * -layer1_speed +
         "vh)",
     },
     ease: Expo.easeOut,
