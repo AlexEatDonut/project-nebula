@@ -44,20 +44,22 @@ body {
 
 .item {
   background-size: cover;
-  left: 50%;
+  left: 0%;
   position: absolute;
-  top: 50%;
+  top: 0%;
 }
 
 #background {
-  background-image: url("http://www.alienresearchcorp.com/space/hd-wallpapers/amazing/img/l/moment-in-space-cvi.jpg");
+  background-image: url(./../maps/ctf_2fort/bg.png);
   background-repeat: no-repeat;
   background-size: cover;
-  bottom: -20%;
-  left: -10%;
+  width: 110vw;
+  height: 110vh;
+  bottom: 5vh;
+  left: -5vw;
   position: absolute;
-  right: -10%;
-  top: -20%;
+  right: 0px;
+  top: 0px;
 }
 
 #x-axis {
@@ -73,17 +75,20 @@ body {
   right: 0;
   height: 1px;
 }
+.item img {
+  height: 100%;
+  width: 100%;
+}
 
 #item-1 {
-  height: 10%;
-  width: 10%;
-  background-color: blue;
+  height: 100%;
+  width: 100%;
   z-index: 20;
 }
 
 #item-2 {
-  height: 20%;
-  width: 20%;
-  background-color: red;
+  height: 100%;
+  width: 100%;
+
   z-index: 10;
 }
