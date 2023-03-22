@@ -24,7 +24,7 @@ $(window).on("mousemove.parallax", function (event) {
 
   left = container_w / 2 - p_pos_x;
   top = container_h / 2 - p_pos_y;
-
+  console.log(p_pos_x, p_pos_y);
   TweenMax.to($x_axis, 1, {
     css: {
       transform: "translateX(" + left * -1 + "px)",

@@ -64,6 +64,7 @@ function accelerationHandler(acceleration, targetId) {
   console.log(s_pos_x, s_pos_y);
   TweenMax.to(ball, 1, {
     css: {
+      transform: "translateX(" + s_pos_x * -1 + "px)",
       right: s_pos_x,
       top: s_pos_y,
     },
