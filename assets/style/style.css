@@ -27,7 +27,11 @@ body {
   position: absolute;
   z-index: 100;
 }
-
+.layer-0,
+.layer-1,
+.layer-2 {
+  transition-duration: 175ms;
+}
 .item {
   background-size: cover;
   left: 50%;
