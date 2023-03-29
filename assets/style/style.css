@@ -54,7 +54,7 @@ body {
   background-repeat: no-repeat;
   background-size: cover;
   width: 110vw;
-  height: 110vh;
+  height: auto;
   bottom: 5vh;
   left: -5vw;
   position: absolute;
@@ -81,14 +81,12 @@ body {
 }
 
 #item-1 {
-  height: 100%;
-  width: 100%;
-  z-index: 20;
+  z-index: 30;
 }
 
 #item-2 {
-  height: 100%;
-  width: 100%;
-
+  z-index: 20;
+}
+#item-3 {
   z-index: 10;
 }

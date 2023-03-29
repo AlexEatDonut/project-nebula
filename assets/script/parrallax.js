@@ -60,6 +60,7 @@ if ("LinearAccelerationSensor" in window && "Gyroscope" in window) {
 let $layer_0 = $(".layer-0"),
   $layer_1 = $(".layer-1"),
   $layer_2 = $(".layer-2"),
+  $layer_3 = $(".layer-3"),
   $x_axis = $("#x-axis"),
   $y_axis = $("#y-axis"),
   $ball = $(".ball"),
@@ -99,6 +100,15 @@ $(window).on("mousemove.parallax", function (event) {
   TweenMax.to($y_axis, 1, {
     css: {
       transform: "translateY(" + p_top * -1 + "px)",
+    },
+    ease: Expo.easeOut,
+    overwrite: "all",
+  });
+
+  TweenMax.to($layer_3, 1, {
+    css: {
+      transform:
+        "translateX(" + p_left / 28 + "px) translateY(" + p_top / 14 + "px)",
     },
     ease: Expo.easeOut,
     overwrite: "all",
