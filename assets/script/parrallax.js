@@ -63,7 +63,6 @@ let $layer_0 = $(".layer-0"),
   $layer_3 = $(".layer-3"),
   $x_axis = $("#x-axis"),
   $y_axis = $("#y-axis"),
-  $ball = $(".ball"),
   $container = $("body"),
   // layer1_speed = -12,
   // layer2_speed = -8,
@@ -108,7 +107,7 @@ $(window).on("mousemove.parallax", function (event) {
   TweenMax.to($layer_3, 1, {
     css: {
       transform:
-        "translateX(" + p_left / 28 + "px) translateY(" + p_top / 14 + "px)",
+        "translateX(" + p_left / 20 + "px) translateY(" + p_top / 10 + "px)",
     },
     ease: Expo.easeOut,
     overwrite: "all",
@@ -117,7 +116,7 @@ $(window).on("mousemove.parallax", function (event) {
   TweenMax.to($layer_2, 1, {
     css: {
       transform:
-        "translateX(" + p_left / 24 + "px) translateY(" + p_top / 12 + "px)",
+        "translateX(" + p_left / 18 + "px) translateY(" + p_top / 9 + "px)",
     },
     ease: Expo.easeOut,
     overwrite: "all",
@@ -126,7 +125,7 @@ $(window).on("mousemove.parallax", function (event) {
   TweenMax.to($layer_1, 1, {
     css: {
       transform:
-        "translateX(" + p_left / 20 + "px) translateY(" + p_top / 10 + "px)",
+        "translateX(" + p_left / 16 + "px) translateY(" + p_top / 8 + "px)",
     },
     ease: Expo.easeOut,
     overwrite: "all",
@@ -135,9 +134,12 @@ $(window).on("mousemove.parallax", function (event) {
   TweenMax.to($layer_0, 10, {
     css: {
       transform:
-        "translateX(" + p_left / 32 + "px) translateY(" + p_top / 16 + "px)",
+        "rotateX(" +
+        (p_left * speed_axis[2]) / 12 +
+        "deg) rotateY(" +
+        (p_top * speed_axis[2]) / 6 +
+        ") ;",
     },
-    ease: Expo.easeOut,
     overwrite: "all",
   });
 });
@@ -157,13 +159,6 @@ function accelerationHandler(acceleration, targetId) {
   info = info.replace("Z", z_acceleration);
   document.getElementById(targetId).innerHTML = info;
   console.log(s_pos_x, s_pos_y);
-  TweenMax.to($ball, 1, {
-    css: {
-      transform: "translateX(" + x_acceleration * -1 + "px)",
-      right: y_acceleration,
-      top: x_acceleration,
-    },
-  });
   TweenMax.to($x_axis, 1, {
     css: {
       transform: "translateX(" + x_acceleration * speed_axis[2] + "vw)",
@@ -180,12 +175,7 @@ function accelerationHandler(acceleration, targetId) {
   });
   TweenMax.to($layer_0, 1, {
     css: {
-      transform:
-        "translateX(" +
-        (x_acceleration * speed_axis[2]) / 12 +
-        "vw) translateY(" +
-        (y_acceleration * -speed_axis[1]) / 6 +
-        "vh)",
+      transform: "rotateX(" + (x_acceleration * speed_axis[2]) / 12 + "deg);",
     },
     ease: Expo.easeOut,
     overwrite: "all",
