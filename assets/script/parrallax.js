@@ -71,8 +71,6 @@ let $layer_0 = $(".layer-0"),
   p_left = 0,
   p_top = 0;
 
-const speed_axis = [-6, -8, -10, -12];
-
 let winWidth = $(window).width();
 let winHeight = $(window).height();
 
@@ -131,18 +129,17 @@ $(window).on("mousemove.parallax", function (event) {
     overwrite: "all",
   });
 
-  TweenMax.to($layer_0, 10, {
+  TweenMax.to($layer_0, 1, {
     css: {
       transform:
-        "rotateX(" +
-        (p_left * speed_axis[2]) / 12 +
-        "deg) rotateY(" +
-        (p_top * speed_axis[2]) / 6 +
-        ") ;",
+        "rotateX(" + p_left * -1 + "deg) rotateY(" + p_top * -1 + ") ;",
+      //     transform: "rotate(" + (z_rotation / 10) * -180 + "deg)",
     },
     overwrite: "all",
   });
 });
+
+const speed_axis = [-6, -8, -10, -12];
 
 function accelerationHandler(acceleration, targetId) {
   let info,
