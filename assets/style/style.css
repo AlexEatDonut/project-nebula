@@ -21,7 +21,9 @@ body {
   margin-left: -50px;
   margin-top: -50px;
 }
-
+.api-info {
+  z-index: 100;
+}
 .axis {
   background-color: rgba(0, 0, 0, 0.2);
   position: absolute;
