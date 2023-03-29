@@ -4,9 +4,12 @@ body {
   height: 100%;
   margin: 0;
   overflow: hidden;
+  position: relative;
 }
-.api-info {
+.api_info {
   position: fixed;
+  top: 0;
+  left: 0;
   z-index: 200;
 }
 .axis {
@@ -59,6 +62,7 @@ body {
   width: 120vw;
   top: -10vh;
   left: -10vw;
+  z-index: 5;
 }
 
 #x-axis {
