@@ -8,36 +8,38 @@
     <title>Teufort Parrallaxd</title>
   </head>
   <body>
-    <img
-      src="https://remipeautre.fr/assets/img/rplogo1.svg"
-      style="height: 100px"
-    />
-    <h1>teufort_parrallaxd</h1>
-    <p>the project doesn't have a proper page yet</p>
+    <img id="gifLoading" src="./assets/img/loading-gif.webp" />
+    <div class="api_info">
+      <img
+        src="https://remipeautre.fr/assets/img/rplogo1.svg"
+        style="height: 100px"
+      />
+      <h1>teufort_parrallaxd</h1>
+      <p>the project isn't finished yet</p>
 
-    <table class="api_info">
-      <tr>
-        <td>API used</td>
-        <td id="moApi"></td>
-      </tr>
-      <tr>
-        <td>linear acceleration (excl. gravity)</td>
-        <td id="moAccel"></td>
-      </tr>
-      <tr>
-        <td>acceleration incl. gravity</td>
-        <td id="moAccelGrav"></td>
-      </tr>
-      <tr>
-        <td>rotation rate</td>
-        <td id="moRotation"></td>
-      </tr>
-      <tr>
-        <td>interval (ms)</td>
-        <td id="moInterval"></td>
-      </tr>
-    </table>
-
+      <table>
+        <tr>
+          <td>API info :</td>
+          <td id="moApi"></td>
+        </tr>
+        <tr>
+          <td>linear acceleration (excl. gravity)</td>
+          <td id="moAccel"></td>
+        </tr>
+        <tr>
+          <td>acceleration incl. gravity</td>
+          <td id="moAccelGrav"></td>
+        </tr>
+        <tr>
+          <td>rotation rate</td>
+          <td id="moRotation"></td>
+        </tr>
+        <tr>
+          <td>interval (ms)</td>
+          <td id="moInterval"></td>
+        </tr>
+      </table>
+    </div>
     <div id="background" class="layer-0"></div>
     <div id="x-axis" class="axis"></div>
     <div id="y-axis" class="axis"></div>
@@ -56,6 +58,5 @@
     type="text/javascript"
     src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.3/TweenMax.min.js"
   ></script>
-  <script src="./assets/script/device-motion.js"></script>
   <script src="./assets/script/parrallax.js"></script>
 </html>
