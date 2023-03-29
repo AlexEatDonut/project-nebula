@@ -134,10 +134,11 @@ $(window).on("mousemove.parallax", function (event) {
 
   TweenMax.to($layer_0, 10, {
     css: {
-      transform: "rotate(" + p_left / 200 + "deg)",
+      transform:
+        "translateX(" + p_left / 32 + "px) translateY(" + p_top / 16 + "px)",
     },
     ease: Expo.easeOut,
-    overwrite: "none",
+    overwrite: "all",
   });
 });
 
@@ -177,14 +178,37 @@ function accelerationHandler(acceleration, targetId) {
     ease: Expo.easeOut,
     overwrite: "all",
   });
-
+  TweenMax.to($layer_0, 1, {
+    css: {
+      transform:
+        "translateX(" +
+        (x_acceleration * speed_axis[2]) / 12 +
+        "vw) translateY(" +
+        (y_acceleration * -speed_axis[1]) / 6 +
+        "vh)",
+    },
+    ease: Expo.easeOut,
+    overwrite: "all",
+  });
+  TweenMax.to($layer_3, 1, {
+    css: {
+      transform:
+        "translateX(" +
+        (x_acceleration * speed_axis[2]) / 4 +
+        "vw) translateY(" +
+        (y_acceleration * -speed_axis[1]) / 2 +
+        "vh)",
+    },
+    ease: Expo.easeOut,
+    overwrite: "all",
+  });
   TweenMax.to($layer_2, 1, {
     css: {
       transform:
         "translateX(" +
-        x_acceleration * speed_axis[2] +
+        (x_acceleration * speed_axis[2]) / 6 +
         "vw) translateY(" +
-        y_acceleration * -speed_axis[1] +
+        (y_acceleration * -speed_axis[1]) / 3 +
         "vh)",
     },
     ease: Expo.easeOut,
@@ -195,9 +219,9 @@ function accelerationHandler(acceleration, targetId) {
     css: {
       transform:
         "translateX(" +
-        x_acceleration * speed_axis[1] +
+        (x_acceleration * speed_axis[1]) / 8 +
         "vw) translateY(" +
-        y_acceleration * -speed_axis[1] +
+        (y_acceleration * -speed_axis[1]) / 4 +
         "vh)",
     },
     ease: Expo.easeOut,
