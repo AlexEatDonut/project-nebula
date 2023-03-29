@@ -1,8 +1,40 @@
+window.addEventListener("load", (event) => {
+  let image = document.querySelector("#gifLoading");
+  let isLoadedSuccessfully = image.complete && image.naturalWidth !== 0;
+  alert(isLoadedSuccessfully);
+});
+
 jQuery.extend({
   percentage: function (a, b) {
     return Math.round((a / b) * 100);
   },
 });
+
+//DEFINITION VARIABLES
+
+let $layer_0 = $(".layer-0"),
+  $layer_1 = $(".layer-1"),
+  $layer_2 = $(".layer-2"),
+  $layer_3 = $(".layer-3"),
+  $x_axis = $("#x-axis"),
+  $y_axis = $("#y-axis"),
+  $container = $("body"),
+  gifLoading = $("#gifLoading"),
+  container_w = $container.width(),
+  container_h = $container.height(),
+  p_left = 0,
+  p_top = 0;
+
+let winWidth = $(window).width();
+let winHeight = $(window).height();
+
+// let s_pos_x = winWidth / (100 / toPercentage(x, 1));
+// let s_pos_y = winHeight / (100 / toPercentage(y, 1));
+
+let s_pos_x = $.percentage(100, winWidth);
+let s_pos_y = $.percentage(100, winWidth);
+
+// EVENT ON IMAGE LOADED
 
 // TESTING TO SEE IF THERE IS A GYROSCOPE
 
@@ -54,31 +86,6 @@ if ("LinearAccelerationSensor" in window && "Gyroscope" in window) {
   document.getElementById("moApi").innerHTML =
     "No Accelerometer & Gyroscope API available";
 }
-
-//DEFINITION VARIABLES
-
-let $layer_0 = $(".layer-0"),
-  $layer_1 = $(".layer-1"),
-  $layer_2 = $(".layer-2"),
-  $layer_3 = $(".layer-3"),
-  $x_axis = $("#x-axis"),
-  $y_axis = $("#y-axis"),
-  $container = $("body"),
-  // layer1_speed = -12,
-  // layer2_speed = -8,
-  container_w = $container.width(),
-  container_h = $container.height(),
-  p_left = 0,
-  p_top = 0;
-
-let winWidth = $(window).width();
-let winHeight = $(window).height();
-
-// let s_pos_x = winWidth / (100 / toPercentage(x, 1));
-// let s_pos_y = winHeight / (100 / toPercentage(y, 1));
-
-let s_pos_x = $.percentage(100, winWidth);
-let s_pos_y = $.percentage(100, winWidth);
 
 $(window).on("mousemove.parallax", function (event) {
   let p_pos_x = event.pageX,
