@@ -23,7 +23,6 @@ let $layer_0 = $(".layer-0"),
   $x_axis = $("#x-axis"),
   $y_axis = $("#y-axis"),
   $container = $("body"),
-  gyroStatus = "false",
   isMenuOn = "false",
   loadingImg = $("#loadingImg"),
   container_w = $container.width(),
@@ -112,7 +111,6 @@ if ("LinearAccelerationSensor" in window && "Gyroscope" in window) {
 
   let gyroscope = new Gyroscope();
   gyroscope.addEventListener("reading", (e) =>
-  gyroStatus = true,
   rotationHandler({
       alpha: gyroscope.x,
       beta: gyroscope.y,
@@ -135,10 +133,8 @@ if ("LinearAccelerationSensor" in window && "Gyroscope" in window) {
 } else {
   document.querySelector("#moApi").innerHTML =
     "No Accelerometer & Gyroscope API available";
-    gyroStatus = false;
 }
-console.log(gyroStatus);
-if (gyroStatus == true){
+
   document.querySelector("#parrallaxActivator").onclick = function () { alert('activated the parrallax !');
   function accelerationHandler(acceleration, targetId) {
     let info,
@@ -196,10 +192,7 @@ if (gyroStatus == true){
   }
   function intervalHandler(interval) {
     document.querySelector("#moInterval").innerHTML = interval;
-  }
-};
-}else {
-  document.querySelector("#parrallaxActivator").onclick = function () { alert('activated the parrallax !');
+  
    // MOUSE MOVEMENT CODE
 $(window).on("mousemove.parallax", function (event) {
   let p_pos_x = event.pageX,
