@@ -64,9 +64,9 @@ function gyroMovement(target, speed1, speed2, mult1, mult2) {
     css: {
       transform:
         "translateX(" +
-        (x_rotation * speed1) / mult1 +
+        (z_acceleration * speed1) / mult1 +
         "vw) translateY(" +
-        (z_rotation * -speed2) / mult2 +
+        (y_acceleration * -speed2) / mult2 +
         "vh)",
     },
     ease: Expo.easeOut,
@@ -234,13 +234,25 @@ function accelerationHandler(acceleration, targetId) {
     ease: Expo.easeOut,
     overwrite: "all",
   });
-  gyroMovement($layer_3, speed_axis[2], speed_axis[1], 2, 4);
+  TweenMax.to(layer_3, 1, {
+    css: {
+      transform:
+        "translateX(" +
+        (z_acceleration * speed_axis[2]) / 2 +
+        "vw) translateY(" +
+        (y_acceleration * -speed_axis[1]) / 4 +
+        "vh)",
+    },
+    ease: Expo.easeOut,
+    overwrite: "all",
+  });
+  // gyroMovement($layer_3, speed_axis[2], speed_axis[1], 2, 4);
   gyroMovement($layer_2, speed_axis[2], speed_axis[1], 2, 4);
   gyroMovement($layer_1, speed_axis[1], speed_axis[1], 4, 8);
-  function intervalHandler(interval) {
-    document.querySelector("#moInterval").innerHTML = interval;
-  }
+}
 
+function intervalHandler(interval) {
+  document.querySelector("#moInterval").innerHTML = interval;
 }
 
 function rotationHandler(rotation) {
