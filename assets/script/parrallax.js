@@ -179,8 +179,8 @@ function accelerationHandler(acceleration, targetId) {
   let info,
     xyz = "[X, Y, Z]";
   x_acceleration = acceleration.x && acceleration.x.toFixed(2);
-  y_acceleration = acceleration.y && acceleration.y.toFixed(2);
-  z_acceleration = acceleration.z && acceleration.z.toFixed(2) - 9;
+  y_acceleration = acceleration.y && acceleration.y.toFixed(2) - 4.5;
+  z_acceleration = acceleration.z && acceleration.z.toFixed(2);
 
   // info = xyz.replace("X", s_pos.x);
   // info = info.replace("Y", s_pos.y);
@@ -191,14 +191,14 @@ function accelerationHandler(acceleration, targetId) {
   document.getElementById(targetId).innerHTML = info;
   TweenMax.to($x_axis, 1, {
     css: {
-      transform: "translateX(" + x_acceleration * speed_axis[4] + "vw)",
+      transform: "translateX(" + x_acceleration * speed_axis[1] + "vw)",
     },
     ease: Expo.easeOut,
     overwrite: "all",
   });
   TweenMax.to($y_axis, 1, {
     css: {
-      transform: "translateY(" + z_acceleration * speed_axis[1] + "vh)",
+      transform: "translateY(" + z_acceleration * speed_axis[4] + "vh)",
     },
     ease: Expo.easeOut,
     overwrite: "all",
@@ -215,7 +215,7 @@ function accelerationHandler(acceleration, targetId) {
     ease: Expo.easeOut,
     overwrite: "all",
   });
-  gyroMovement($layer_3, speed_axis[2], speed_axis[1], 4, 2);
+  gyroMovement($layer_3, speed_axis[2], speed_axis[1], 2, 4);
   // TweenMax.to($layer_3, 1, {
   //   css: {
   //     transform:
@@ -228,7 +228,7 @@ function accelerationHandler(acceleration, targetId) {
   //   ease: Expo.easeOut,
   //   overwrite: "all",
   // });
-  gyroMovement($layer_2, speed_axis[2], speed_axis[1], 4, 2);
+  gyroMovement($layer_2, speed_axis[2], speed_axis[1], 2, 4);
   // TweenMax.to($layer_2, 1, {
   //   css: {
   //     transform:
@@ -241,7 +241,7 @@ function accelerationHandler(acceleration, targetId) {
   //   ease: Expo.easeOut,
   //   overwrite: "all",
   // });
-  gyroMovement($layer_1, speed_axis[1], speed_axis[1], 8, 4);
+  gyroMovement($layer_1, speed_axis[1], speed_axis[1], 4, 8);
   // TweenMax.to($layer_1, 1, {
   //   css: {
   //     transform:
