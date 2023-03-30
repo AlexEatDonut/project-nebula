@@ -135,64 +135,7 @@ if ("LinearAccelerationSensor" in window && "Gyroscope" in window) {
     "No Accelerometer & Gyroscope API available";
 }
 
-  document.querySelector("#parrallaxActivator").onclick = function () { alert('activated the parrallax !');
-  function accelerationHandler(acceleration, targetId) {
-    let info,
-      xyz = "[X, Y, Z]";
-    x_acceleration = acceleration.x && acceleration.x.toFixed(2);
-    y_acceleration.toFixed(2) = acceleration.y && acceleration.y.toFixed(2) - 4.5;
-    z_acceleration = acceleration.z && acceleration.z.toFixed(2);
-  
-    info = xyz.replace("X", x_acceleration);
-    info = info.replace("Y", y_acceleration);
-    info = info.replace("Z", z_acceleration);
-    document.getElementById(targetId).innerHTML = info;
-  }
-  
-  function rotationHandler(rotation) {
-    let info,
-      xyz = "[X, Y, Z]";
-    x_rotation = rotation.alpha && rotation.alpha.toFixed(2);
-    y_rotation = rotation.beta && rotation.beta.toFixed(2);
-    z_rotation = rotation.gamma && rotation.gamma.toFixed(2);
-    info = xyz.replace("X", y_rotation);
-    info = info.replace("Y", x_rotation);
-    info = info.replace("Z", z_rotation);
-    document.getElementById("moRotation").innerHTML = info;
-  
-    TweenMax.to($x_axis, 1, {
-      css: {
-        transform: "translateX(" + x_rotation * speed_axis[1] + "vw)",
-      },
-      ease: Expo.easeOut,
-      overwrite: "all",
-    });
-    TweenMax.to($y_axis, 1, {
-      css: {
-        transform: "translateY(" + z_rotation * speed_axis[4] + "vh)",
-      },
-      ease: Expo.easeOut,
-      overwrite: "all",
-    });
-    TweenMax.to($layer_0, 1, {
-      css: {
-        transform:
-          "rotateX(" +
-          (x_rotation * speed_axis[1]) / 360 +
-          "deg) rotateY(" +
-          (z_rotation * speed_axis[1]) / 360 +
-          "deg);",
-      },
-      ease: Expo.easeOut,
-      overwrite: "all",
-    });
-    gyroMovement($layer_3, speed_axis[2], speed_axis[1], 2, 4);
-    gyroMovement($layer_2, speed_axis[2], speed_axis[1], 2, 4);
-    gyroMovement($layer_1, speed_axis[1], speed_axis[1], 4, 8);
-  }
-  function intervalHandler(interval) {
-    document.querySelector("#moInterval").innerHTML = interval;
-  
+document.querySelector("#parrallaxActivator").onclick = function () { alert('activated the parrallax !');
    // MOUSE MOVEMENT CODE
 $(window).on("mousemove.parallax", function (event) {
   let p_pos_x = event.pageX,
@@ -253,5 +196,62 @@ $(window).on("mousemove.parallax", function (event) {
   });
 });
 };
+
+function accelerationHandler(acceleration, targetId) {
+  let info,
+    xyz = "[X, Y, Z]";
+  x_acceleration = acceleration.x && acceleration.x.toFixed(2);
+  y_acceleration.toFixed(2) = acceleration.y && acceleration.y.toFixed(2) - 4.5;
+  z_acceleration = acceleration.z && acceleration.z.toFixed(2);
+
+  info = xyz.replace("X", x_acceleration);
+  info = info.replace("Y", y_acceleration);
+  info = info.replace("Z", z_acceleration);
+  document.getElementById(targetId).innerHTML = info;
+}
+
+function rotationHandler(rotation) {
+  let info,
+    xyz = "[X, Y, Z]";
+  x_rotation = rotation.alpha && rotation.alpha.toFixed(2);
+  y_rotation = rotation.beta && rotation.beta.toFixed(2);
+  z_rotation = rotation.gamma && rotation.gamma.toFixed(2);
+  info = xyz.replace("X", y_rotation);
+  info = info.replace("Y", x_rotation);
+  info = info.replace("Z", z_rotation);
+  document.getElementById("moRotation").innerHTML = info;
+
+  TweenMax.to($x_axis, 1, {
+    css: {
+      transform: "translateX(" + x_rotation * speed_axis[1] + "vw)",
+    },
+    ease: Expo.easeOut,
+    overwrite: "all",
+  });
+  TweenMax.to($y_axis, 1, {
+    css: {
+      transform: "translateY(" + z_rotation * speed_axis[4] + "vh)",
+    },
+    ease: Expo.easeOut,
+    overwrite: "all",
+  });
+  TweenMax.to($layer_0, 1, {
+    css: {
+      transform:
+        "rotateX(" +
+        (x_rotation * speed_axis[1]) / 360 +
+        "deg) rotateY(" +
+        (z_rotation * speed_axis[1]) / 360 +
+        "deg);",
+    },
+    ease: Expo.easeOut,
+    overwrite: "all",
+  });
+  gyroMovement($layer_3, speed_axis[2], speed_axis[1], 2, 4);
+  gyroMovement($layer_2, speed_axis[2], speed_axis[1], 2, 4);
+  gyroMovement($layer_1, speed_axis[1], speed_axis[1], 4, 8);
+}
+function intervalHandler(interval) {
+  document.querySelector("#moInterval").innerHTML = interval;
 }
 
