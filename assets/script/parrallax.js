@@ -39,19 +39,18 @@ let winHeight = $(window).height();
 let s_pos_x = $.percentage(100, winWidth);
 let s_pos_y = $.percentage(100, winWidth);
 
-
-// DEV MENU 
-document.querySelector(".floatingLogo").addEventListener("click" , function(){
-  testDevMenu()
+// DEV MENU
+document.querySelector(".floatingLogo").addEventListener("click", function () {
+  testDevMenu();
 });
 
 function testDevMenu() {
   if (isMenuOn == false) {
-    document.querySelector(".dev_info").classList.add("d-none")
+    document.querySelector(".dev_info").classList.add("d-none");
 
     isMenuOn = true;
   } else {
-    document.querySelector(".dev_info").classList.remove("d-none")
+    document.querySelector(".dev_info").classList.remove("d-none");
     isMenuOn = false;
   }
 }
@@ -81,7 +80,7 @@ let isLoadedSuccessfully = image.complete && image.naturalWidth !== 0;
 
 window.addEventListener("load", (event) => {
   alert("image is loaded successfully");
-  image.classList.add("d-none")
+  image.classList.add("d-none");
 });
 
 // TESTING TO SEE IF THERE IS A GYROSCOPE
@@ -111,13 +110,11 @@ if ("LinearAccelerationSensor" in window && "Gyroscope" in window) {
 
   let gyroscope = new Gyroscope();
   gyroscope.addEventListener("reading", (e) =>
-  rotationHandler({
+    rotationHandler({
       alpha: gyroscope.x,
       beta: gyroscope.y,
       gamma: gyroscope.z,
-    }
-    )      
-
+    })
   );
   gyroscope.start();
 } else if ("DeviceMotionEvent" in window) {
@@ -134,43 +131,126 @@ if ("LinearAccelerationSensor" in window && "Gyroscope" in window) {
     "No Accelerometer & Gyroscope API available";
 }
 
-document.querySelector("#parrallaxActivator").onclick = function () { alert('activated the parrallax !');
-   // MOUSE MOVEMENT CODE
-$(window).on("mousemove.parallax", function (event) {
-  let p_pos_x = event.pageX,
-    p_pos_y = event.pageY,
-    p_left = container_w / 2 - p_pos_x;
-  p_top = container_h / 2 - p_pos_y;
-  document.querySelector("#pLeftInfo").innerHTML = p_left;
-  document.querySelector("#pTopInfo").innerHTML = p_top;
+document.querySelector("#parrallaxActivator").onclick = function () {
+  alert("activated the parrallax !");
+  // MOUSE MOVEMENT CODE
+  $(window).on("mousemove.parallax", function (event) {
+    let p_pos_x = event.pageX,
+      p_pos_y = event.pageY,
+      p_left = container_w / 2 - p_pos_x;
+    p_top = container_h / 2 - p_pos_y;
+    document.querySelector("#pLeftInfo").innerHTML = p_left;
+    document.querySelector("#pTopInfo").innerHTML = p_top;
+    TweenMax.to($x_axis, 1, {
+      css: {
+        transform: "translateX(" + p_left * -1 + "px)",
+      },
+      ease: Expo.easeOut,
+      overwrite: "all",
+    });
+    TweenMax.to($y_axis, 1, {
+      css: {
+        transform: "translateY(" + p_top * -1 + "px)",
+      },
+      ease: Expo.easeOut,
+      overwrite: "all",
+    });
+
+    TweenMax.to($layer_3, 1, {
+      css: {
+        transform:
+          "translateX(" + p_left / 20 + "px) translateY(" + p_top / 10 + "px)",
+      },
+      ease: Expo.easeOut,
+      overwrite: "all",
+    });
+
+    TweenMax.to($layer_2, 1, {
+      css: {
+        transform:
+          "translateX(" + p_left / 18 + "px) translateY(" + p_top / 9 + "px)",
+      },
+      ease: Expo.easeOut,
+      overwrite: "all",
+    });
+
+    TweenMax.to($layer_1, 1, {
+      css: {
+        transform:
+          "translateX(" + p_left / 16 + "px) translateY(" + p_top / 8 + "px)",
+      },
+      ease: Expo.easeOut,
+      overwrite: "all",
+    });
+
+    TweenMax.to($layer_0, 1, {
+      css: {
+        transform:
+          "translateX(" + p_left / 64 + "px) translateY(" + p_top / 32 + "px)",
+      },
+      ease: Expo.easeOut,
+      overwrite: "all",
+    });
+  });
+};
+
+// GYROSCOPE CODE
+
+function accelerationHandler(acceleration, targetId) {
+  let info,
+    xyz = "[X, Y, Z]";
+  x_acceleration = acceleration.x && acceleration.x.toFixed(2);
+  y_acceleration = acceleration.y && acceleration.y.toFixed(2);
+  z_acceleration = acceleration.z && acceleration.z.toFixed(2);
+
+  // info = xyz.replace("X", s_pos.x);
+  // info = info.replace("Y", s_pos.y);
+  // info = info.replace("Z", z);
+  info = xyz.replace("X", x_acceleration);
+  info = info.replace("Y", y_acceleration);
+  info = info.replace("Z", z_acceleration);
+  document.getElementById(targetId).innerHTML = info;
   TweenMax.to($x_axis, 1, {
     css: {
-      transform: "translateX(" + p_left * -1 + "px)",
+      transform: "translateX(" + x_acceleration * speed_axis[2] + "vw)",
     },
     ease: Expo.easeOut,
     overwrite: "all",
   });
   TweenMax.to($y_axis, 1, {
     css: {
-      transform: "translateY(" + p_top * -1 + "px)",
+      transform: "translateY(" + y_acceleration * speed_axis[1] + "vh)",
     },
     ease: Expo.easeOut,
     overwrite: "all",
   });
-
+  TweenMax.to($layer_0, 1, {
+    css: {
+      transform: "rotateX(" + (x_acceleration * speed_axis[2]) / 180 + "deg);",
+    },
+    ease: Expo.easeOut,
+    overwrite: "all",
+  });
   TweenMax.to($layer_3, 1, {
     css: {
       transform:
-        "translateX(" + p_left / 20 + "px) translateY(" + p_top / 10 + "px)",
+        "translateX(" +
+        (x_acceleration * speed_axis[2]) / 4 +
+        "vw) translateY(" +
+        (y_acceleration * -speed_axis[1]) / 2 +
+        "vh)",
     },
     ease: Expo.easeOut,
     overwrite: "all",
   });
-
   TweenMax.to($layer_2, 1, {
     css: {
       transform:
-        "translateX(" + p_left / 18 + "px) translateY(" + p_top / 9 + "px)",
+        "translateX(" +
+        (x_acceleration * speed_axis[2]) / 6 +
+        "vw) translateY(" +
+        (y_acceleration * -speed_axis[1]) / 3 +
+        "vh)",
     },
     ease: Expo.easeOut,
     overwrite: "all",
@@ -179,80 +259,15 @@ $(window).on("mousemove.parallax", function (event) {
   TweenMax.to($layer_1, 1, {
     css: {
       transform:
-        "translateX(" + p_left / 16 + "px) translateY(" + p_top / 8 + "px)",
-    },
-    ease: Expo.easeOut,
-    overwrite: "all",
-  });
-
-  TweenMax.to($layer_0, 1, {
-    css: {
-      transform:
-        "translateX(" + p_left / 64 + "px) translateY(" + p_top / 32 + "px)",
-    },
-    ease: Expo.easeOut,
-    overwrite: "all",
-  });
-});
-};
-
-function accelerationHandler(acceleration, targetId) {
-  let info,
-    xyz = "[X, Y, Z]";
-  x_acceleration = acceleration.x && acceleration.x.toFixed(2);
-  y_acceleration.toFixed(2) = acceleration.y && acceleration.y.toFixed(2) - 4.5;
-  z_acceleration = acceleration.z && acceleration.z.toFixed(2);
-
-  info = xyz.replace("X", x_acceleration);
-  info = info.replace("Y", y_acceleration);
-  info = info.replace("Z", z_acceleration);
-  document.getElementById(targetId).innerHTML = info;
-
-  TweenMax.to($x_axis, 1, {
-    css: {
-      transform: "translateX(" + z_acceleration * speed_axis[1] + "vw)",
-    },
-    ease: Expo.easeOut,
-    overwrite: "all",
-  });
-  TweenMax.to($y_axis, 1, {
-    css: {
-      transform: "translateY(" + y_acceleration * speed_axis[4] + "vh)",
-    },
-    ease: Expo.easeOut,
-    overwrite: "all",
-  });
-  TweenMax.to($layer_0, 1, {
-    css: {
-      transform:
-        "rotateX(" +
-        (z_acceleration * speed_axis[1]) / 360 +
-        "deg) rotateY(" +
-        (y_acceleration * speed_axis[1]) / 360 +
-        "deg);",
-    },
-    ease: Expo.easeOut,
-    overwrite: "all",
-  });
-  TweenMax.to(layer_3, 1, {
-    css: {
-      transform:
         "translateX(" +
-        (z_acceleration * speed_axis[2]) / 2 +
+        (x_acceleration * speed_axis[1]) / 8 +
         "vw) translateY(" +
         (y_acceleration * -speed_axis[1]) / 4 +
         "vh)",
     },
     ease: Expo.easeOut,
-    overwrite: "all",
+    overwrite: "none",
   });
-  // gyroMovement($layer_3, speed_axis[2], speed_axis[1], 2, 4);
-  gyroMovement($layer_2, speed_axis[2], speed_axis[1], 2, 4);
-  gyroMovement($layer_1, speed_axis[1], speed_axis[1], 4, 8);
-}
-
-function intervalHandler(interval) {
-  document.querySelector("#moInterval").innerHTML = interval;
 }
 
 function rotationHandler(rotation) {
@@ -267,4 +282,6 @@ function rotationHandler(rotation) {
   document.getElementById("moRotation").innerHTML = info;
 }
 
-
+function intervalHandler(interval) {
+  document.querySelector("#moInterval").innerHTML = interval;
+}
