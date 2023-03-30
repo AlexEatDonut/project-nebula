@@ -237,7 +237,7 @@ function accelerationHandler(acceleration, targetId) {
         "translateX(" +
         x_acceleration / 4 +
         "vw) translateY(" +
-        y_acceleration / 2 +
+        (y_acceleration - 4.5) / 2 +
         "vh)",
     },
     ease: Expo.easeOut,
@@ -249,7 +249,7 @@ function accelerationHandler(acceleration, targetId) {
         "translateX(" +
         x_acceleration / 6 +
         "vw) translateY(" +
-        y_acceleration / 3 +
+        (y_acceleration - 4.5) / 3 +
         "vh)",
     },
     ease: Expo.easeOut,
@@ -262,7 +262,7 @@ function accelerationHandler(acceleration, targetId) {
         "translateX(" +
         x_acceleration / 8 +
         "vw) translateY(" +
-        y_acceleration / 4 +
+        (y_acceleration - 4.5) / 4 +
         "vh)",
     },
     ease: Expo.easeOut,
