@@ -115,7 +115,6 @@ if ("LinearAccelerationSensor" in window && "Gyroscope" in window) {
       alpha: gyroscope.x,
       beta: gyroscope.y,
       gamma: gyroscope.z,
-
     }
     )      
 
@@ -208,6 +207,40 @@ function accelerationHandler(acceleration, targetId) {
   info = info.replace("Y", y_acceleration);
   info = info.replace("Z", z_acceleration);
   document.getElementById(targetId).innerHTML = info;
+
+  TweenMax.to($x_axis, 1, {
+    css: {
+      transform: "translateX(" + z_acceleration * speed_axis[1] + "vw)",
+    },
+    ease: Expo.easeOut,
+    overwrite: "all",
+  });
+  TweenMax.to($y_axis, 1, {
+    css: {
+      transform: "translateY(" + y_acceleration * speed_axis[4] + "vh)",
+    },
+    ease: Expo.easeOut,
+    overwrite: "all",
+  });
+  TweenMax.to($layer_0, 1, {
+    css: {
+      transform:
+        "rotateX(" +
+        (z_acceleration * speed_axis[1]) / 360 +
+        "deg) rotateY(" +
+        (y_acceleration * speed_axis[1]) / 360 +
+        "deg);",
+    },
+    ease: Expo.easeOut,
+    overwrite: "all",
+  });
+  gyroMovement($layer_3, speed_axis[2], speed_axis[1], 2, 4);
+  gyroMovement($layer_2, speed_axis[2], speed_axis[1], 2, 4);
+  gyroMovement($layer_1, speed_axis[1], speed_axis[1], 4, 8);
+  function intervalHandler(interval) {
+    document.querySelector("#moInterval").innerHTML = interval;
+  }
+
 }
 
 function rotationHandler(rotation) {
@@ -220,38 +253,6 @@ function rotationHandler(rotation) {
   info = info.replace("Y", x_rotation);
   info = info.replace("Z", z_rotation);
   document.getElementById("moRotation").innerHTML = info;
+}
 
-  TweenMax.to($x_axis, 1, {
-    css: {
-      transform: "translateX(" + z_rotation * speed_axis[1] + "vw)",
-    },
-    ease: Expo.easeOut,
-    overwrite: "all",
-  });
-  TweenMax.to($y_axis, 1, {
-    css: {
-      transform: "translateY(" + y_rotation * speed_axis[4] + "vh)",
-    },
-    ease: Expo.easeOut,
-    overwrite: "all",
-  });
-  TweenMax.to($layer_0, 1, {
-    css: {
-      transform:
-        "rotateX(" +
-        (z_rotation * speed_axis[1]) / 360 +
-        "deg) rotateY(" +
-        (y_rotation * speed_axis[1]) / 360 +
-        "deg);",
-    },
-    ease: Expo.easeOut,
-    overwrite: "all",
-  });
-  gyroMovement($layer_3, speed_axis[2], speed_axis[1], 2, 4);
-  gyroMovement($layer_2, speed_axis[2], speed_axis[1], 2, 4);
-  gyroMovement($layer_1, speed_axis[1], speed_axis[1], 4, 8);
-}
-function intervalHandler(interval) {
-  document.querySelector("#moInterval").innerHTML = interval;
-}
 
