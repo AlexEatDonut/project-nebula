@@ -10,20 +10,24 @@
   <body>
     <!-- <span class="letterbox borderL"></span>
     <span class="letterbox borderR"></span> -->
-    <img
-      src="https://remipeautre.fr/assets/img/rplogo1.svg"
-      class="floatingLogo"
-    />
+    <div class="floatingLogo">
+      <img src="https://remipeautre.fr/assets/img/rplogo1.svg" />
+    </div>
     <main id="mainMenu" class="menuOverlay">
       <header><h1>Teufort Parrallaxd</h1></header>
+      <section>
+        <figure id="loading" class="loadingIcon">
+          <img src="./assets/img/loading-gif.webp" />
+          <figcaption>Loading...</figcaption>
+        </figure>
+      </section>
       <nav>
-        <button id="activator">Explore 2fort</button>
+        <button id="parrallaxActivator">Explore 2fort</button>
         <button>Learn to make maps</button>
         <button>About</button>
       </nav>
     </main>
-    <img id="gifLoading" src="./assets/img/loading-gif.webp" />
-    <div class="dev_info">
+    <div class="dev_info d-none">
       <p>dev menu</p>
       <p>the project isn't finished yet</p>
       <table>

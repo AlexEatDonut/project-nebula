@@ -9,6 +9,29 @@ body {
   position: relative;
   font-family: "Ubuntu", sans-serif;
 }
+.d-none {
+  display: none !important;
+}
+
+main {
+  position: absolute;
+  z-index: 500;
+  color: white;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+.loadingIcon {
+  max-width: 20vw;
+  max-height: 20vw;
+  margin: 0 auto 0 auto;
+  transition-duration: 200ms;
+}
+.loadingIcon img {
+  width: 10vw;
+}
+.loadingIcon figcaption {
+  font-size: 3em;
+}
 .floatingLogo {
   width: 5%;
   position: fixed;
@@ -16,16 +39,15 @@ body {
   right: 0;
   z-index: 500;
 }
+.floatingLogo img {
+  width: 100%;
+  height: 100%;
+}
 .dev_info {
   position: fixed;
   top: 0;
   right: 5%;
   z-index: 200;
-  color: white;
-}
-main {
-  position: absolute;
-  z-index: 500;
   color: white;
 }
 .axis {

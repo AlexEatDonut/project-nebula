@@ -4,12 +4,6 @@ jQuery.extend({
   },
 });
 
-window.addEventListener("load", (event) => {
-  let image = document.querySelector("#gifLoading");
-  let isLoadedSuccessfully = image.complete && image.naturalWidth !== 0;
-  alert("image is loaded successfully");
-});
-
 // CHECK IF ON MOBILE
 
 let is_mobile =
@@ -30,7 +24,8 @@ let $layer_0 = $(".layer-0"),
   $y_axis = $("#y-axis"),
   $container = $("body"),
   gyroStatus = "false",
-  gifLoading = $("#gifLoading"),
+  isMenuOn = "false",
+  loadingImg = $("#loadingImg"),
   container_w = $container.width(),
   container_h = $container.height(),
   p_left = 0,
@@ -44,6 +39,23 @@ let winHeight = $(window).height();
 
 let s_pos_x = $.percentage(100, winWidth);
 let s_pos_y = $.percentage(100, winWidth);
+
+
+// DEV MENU 
+document.querySelector(".floatingLogo").addEventListener("click" , function(){
+  testDevMenu()
+});
+
+function testDevMenu() {
+  if (isMenuOn == false) {
+    document.querySelector(".dev_info").classList.add("d-none")
+
+    isMenuOn = true;
+  } else {
+    document.querySelector(".dev_info").classList.remove("d-none")
+    isMenuOn = false;
+  }
+}
 
 // GYROSCOPE function
 const speed_axis = [-6, -8, -10, -12];
@@ -64,6 +76,14 @@ function gyroMovement(target, speed1, speed2, mult1, mult2) {
 }
 
 // EVENT ON IMAGE LOADED
+
+let image = document.querySelector("#loading");
+let isLoadedSuccessfully = image.complete && image.naturalWidth !== 0;
+
+window.addEventListener("load", (event) => {
+  alert("image is loaded successfully");
+  image.classList.add("d-none")
+});
 
 // TESTING TO SEE IF THERE IS A GYROSCOPE
 
@@ -119,7 +139,7 @@ if ("LinearAccelerationSensor" in window && "Gyroscope" in window) {
 }
 console.log(gyroStatus);
 if (gyroStatus == true){
-  document.querySelector("#activator").onclick = function () { alert('activated the parrallax !');
+  document.querySelector("#parrallaxActivator").onclick = function () { alert('activated the parrallax !');
   function accelerationHandler(acceleration, targetId) {
     let info,
       xyz = "[X, Y, Z]";
@@ -179,7 +199,7 @@ if (gyroStatus == true){
   }
 };
 }else {
-  document.querySelector("#activator").onclick = function () { alert('activated the parrallax !');
+  document.querySelector("#parrallaxActivator").onclick = function () { alert('activated the parrallax !');
    // MOUSE MOVEMENT CODE
 $(window).on("mousemove.parallax", function (event) {
   let p_pos_x = event.pageX,
