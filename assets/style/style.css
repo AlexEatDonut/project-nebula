@@ -32,6 +32,7 @@ body {
   background-position: center;
   position: absolute;
   height: 120vh;
+  width: 120vw;
   top: -10vh;
   left: -10vw;
   z-index: 5;
