@@ -94,6 +94,9 @@ if ("LinearAccelerationSensor" in window && "Gyroscope" in window) {
     "No Accelerometer & Gyroscope API available";
 }
 
+
+
+document.querySelector("#activator").onclick = function () { alert('activated the parrallax !'); 
 // MOUSE MOVEMENT CODE
 
 $(window).on("mousemove.parallax", function (event) {
@@ -148,13 +151,15 @@ $(window).on("mousemove.parallax", function (event) {
   TweenMax.to($layer_0, 1, {
     css: {
       transform:
-        "rotateX(" + p_left / 360 + "deg) rotateY(" + p_top / 360 + ") ;",
-      //     transform: "rotate(" + (z_rotation / 10) * -180 + "deg)",
+        "translateX(" + p_left / 64 + "px) translateY(" + p_top / 32 + "px)",
     },
     ease: Expo.easeOut,
     overwrite: "all",
   });
 });
+}
+
+
 
 // GYROSCOPE CODE
 
@@ -179,12 +184,9 @@ function accelerationHandler(acceleration, targetId) {
   let info,
     xyz = "[X, Y, Z]";
   x_acceleration = acceleration.x && acceleration.x.toFixed(2);
-  y_acceleration = acceleration.y && acceleration.y.toFixed(2) - 4.5;
+  y_acceleration.toFixed(2) = acceleration.y && acceleration.y.toFixed(2) - 4.5;
   z_acceleration = acceleration.z && acceleration.z.toFixed(2);
 
-  // info = xyz.replace("X", s_pos.x);
-  // info = info.replace("Y", s_pos.y);
-  // info = info.replace("Z", z);
   info = xyz.replace("X", x_acceleration);
   info = info.replace("Y", y_acceleration);
   info = info.replace("Z", z_acceleration);
