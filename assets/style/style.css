@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Ubuntu&display=swap");
+
 html,
 body {
   background-color: white;
@@ -5,12 +7,26 @@ body {
   margin: 0;
   overflow: hidden;
   position: relative;
+  font-family: "Ubuntu", sans-serif;
 }
-.api_info {
+.floatingLogo {
+  width: 5%;
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  z-index: 500;
+}
+.dev_info {
   position: fixed;
   top: 0;
-  left: 0;
+  right: 5%;
   z-index: 200;
+  color: white;
+}
+main {
+  position: absolute;
+  z-index: 500;
+  color: white;
 }
 .axis {
   background-color: rgba(0, 0, 0, 0.2);
@@ -24,7 +40,20 @@ body {
   width: 100vw;
   height: 100vh;
 }
-
+.letterbox {
+  height: 100%;
+  width: 5%;
+  background-color: black;
+  position: absolute;
+  top: 0;
+  z-index: 200;
+}
+.borderL {
+  left: 0;
+}
+.borderR {
+  right: 0;
+}
 #background {
   background-image: url(./../maps/ctf_2fort/bg.png);
   background-repeat: no-repeat;
@@ -55,8 +84,8 @@ body {
 .item {
   position: absolute;
   height: 120vh;
-  bottom: -10vh;
-  left: -10vh;
+  bottom: -5vw;
+  left: -7vh;
 }
 
 .item img {
