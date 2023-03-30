@@ -17,6 +17,13 @@ body {
   position: absolute;
   z-index: 100;
 }
+.fullContainer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+}
 @media screen and (min-width: 580px) {
   .layer-0,
   .layer-1,
@@ -24,14 +31,6 @@ body {
   .layer-3,
   #background {
     transition-duration: 20ms;
-  }
-
-  .item {
-    position: absolute;
-    height: 115vh;
-    width: 115vw;
-    top: -5vh;
-    left: -5vw;
   }
 }
 @media screen and (max-width: 580px) {
@@ -41,14 +40,6 @@ body {
   .layer-3,
   #background {
     transition-duration: 175ms;
-  }
-
-  .item {
-    position: absolute;
-    height: 110vh;
-    width: auto;
-    top: -5vh;
-    left: -50%;
   }
 }
 
@@ -81,15 +72,15 @@ body {
 
 .item {
   position: absolute;
-  height: 115vh;
-  width: 115vw;
-  top: -5vh;
-  left: -5vw;
+  height: 120vh;
+  bottom: -10vh;
+  left: -10vh;
 }
 
 .item img {
   height: 100%;
-  width: 100%;
+  object-fit: contain;
+  object-position: center;
 }
 
 #item-1 {
