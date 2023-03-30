@@ -165,9 +165,9 @@ function gyroMovement(target, speed1, speed2, mult1, mult2) {
     css: {
       transform:
         "translateX(" +
-        (x_acceleration * speed1) / mult1 +
+        (x_rotation * speed1) / mult1 +
         "vw) translateY(" +
-        (z_acceleration * -speed2) / mult2 +
+        (z_rotation * -speed2) / mult2 +
         "vh)",
     },
     ease: Expo.easeOut,
@@ -189,16 +189,29 @@ function accelerationHandler(acceleration, targetId) {
   info = info.replace("Y", y_acceleration);
   info = info.replace("Z", z_acceleration);
   document.getElementById(targetId).innerHTML = info;
+}
+
+function rotationHandler(rotation) {
+  let info,
+    xyz = "[X, Y, Z]";
+  x_rotation = rotation.alpha && rotation.alpha.toFixed(2);
+  y_rotation = rotation.beta && rotation.beta.toFixed(2);
+  z_rotation = rotation.gamma && rotation.gamma.toFixed(2);
+  info = xyz.replace("X", y_rotation);
+  info = info.replace("Y", x_rotation);
+  info = info.replace("Z", z_rotation);
+  document.getElementById("moRotation").innerHTML = info;
+
   TweenMax.to($x_axis, 1, {
     css: {
-      transform: "translateX(" + x_acceleration * speed_axis[1] + "vw)",
+      transform: "translateX(" + x_rotation * speed_axis[1] + "vw)",
     },
     ease: Expo.easeOut,
     overwrite: "all",
   });
   TweenMax.to($y_axis, 1, {
     css: {
-      transform: "translateY(" + z_acceleration * speed_axis[4] + "vh)",
+      transform: "translateY(" + z_rotation * speed_axis[4] + "vh)",
     },
     ease: Expo.easeOut,
     overwrite: "all",
@@ -207,9 +220,9 @@ function accelerationHandler(acceleration, targetId) {
     css: {
       transform:
         "rotateX(" +
-        (x_acceleration * speed_axis[1]) / 360 +
+        (x_rotation * speed_axis[1]) / 360 +
         "deg) rotateY(" +
-        (z_acceleration * speed_axis[1]) / 360 +
+        (z_rotation * speed_axis[1]) / 360 +
         "deg);",
     },
     ease: Expo.easeOut,
@@ -254,18 +267,6 @@ function accelerationHandler(acceleration, targetId) {
   //   ease: Expo.easeOut,
   //   overwrite: "none",
   // });
-}
-
-function rotationHandler(rotation) {
-  let info,
-    xyz = "[X, Y, Z]";
-  x_rotation = rotation.alpha && rotation.alpha.toFixed(2);
-  y_rotation = rotation.beta && rotation.beta.toFixed(2);
-  z_rotation = rotation.gamma && rotation.gamma.toFixed(2);
-  info = xyz.replace("X", y_rotation);
-  info = info.replace("Y", x_rotation);
-  info = info.replace("Z", z_rotation);
-  document.getElementById("moRotation").innerHTML = info;
 
   // TweenMax.to($layer_1, 1, {
   //   css: {
