@@ -29,6 +29,7 @@ let $layer_0 = $(".layer-0"),
   $x_axis = $("#x-axis"),
   $y_axis = $("#y-axis"),
   $container = $("body"),
+  gyroStatus = "false",
   gifLoading = $("#gifLoading"),
   container_w = $container.width(),
   container_h = $container.height(),
@@ -43,6 +44,24 @@ let winHeight = $(window).height();
 
 let s_pos_x = $.percentage(100, winWidth);
 let s_pos_y = $.percentage(100, winWidth);
+
+// GYROSCOPE function
+const speed_axis = [-6, -8, -10, -12];
+
+function gyroMovement(target, speed1, speed2, mult1, mult2) {
+  TweenMax.to(target, 1, {
+    css: {
+      transform:
+        "translateX(" +
+        (x_rotation * speed1) / mult1 +
+        "vw) translateY(" +
+        (z_rotation * -speed2) / mult2 +
+        "vh)",
+    },
+    ease: Expo.easeOut,
+    overwrite: "all",
+  });
+}
 
 // EVENT ON IMAGE LOADED
 
@@ -73,11 +92,15 @@ if ("LinearAccelerationSensor" in window && "Gyroscope" in window) {
 
   let gyroscope = new Gyroscope();
   gyroscope.addEventListener("reading", (e) =>
-    rotationHandler({
+  gyroStatus = true,
+  rotationHandler({
       alpha: gyroscope.x,
       beta: gyroscope.y,
       gamma: gyroscope.z,
-    })
+
+    }
+    )      
+
   );
   gyroscope.start();
 } else if ("DeviceMotionEvent" in window) {
@@ -92,13 +115,72 @@ if ("LinearAccelerationSensor" in window && "Gyroscope" in window) {
 } else {
   document.querySelector("#moApi").innerHTML =
     "No Accelerometer & Gyroscope API available";
+    gyroStatus = false;
 }
-
-
-
-document.querySelector("#activator").onclick = function () { alert('activated the parrallax !'); 
-// MOUSE MOVEMENT CODE
-
+console.log(gyroStatus);
+if (gyroStatus == true){
+  document.querySelector("#activator").onclick = function () { alert('activated the parrallax !');
+  function accelerationHandler(acceleration, targetId) {
+    let info,
+      xyz = "[X, Y, Z]";
+    x_acceleration = acceleration.x && acceleration.x.toFixed(2);
+    y_acceleration.toFixed(2) = acceleration.y && acceleration.y.toFixed(2) - 4.5;
+    z_acceleration = acceleration.z && acceleration.z.toFixed(2);
+  
+    info = xyz.replace("X", x_acceleration);
+    info = info.replace("Y", y_acceleration);
+    info = info.replace("Z", z_acceleration);
+    document.getElementById(targetId).innerHTML = info;
+  }
+  
+  function rotationHandler(rotation) {
+    let info,
+      xyz = "[X, Y, Z]";
+    x_rotation = rotation.alpha && rotation.alpha.toFixed(2);
+    y_rotation = rotation.beta && rotation.beta.toFixed(2);
+    z_rotation = rotation.gamma && rotation.gamma.toFixed(2);
+    info = xyz.replace("X", y_rotation);
+    info = info.replace("Y", x_rotation);
+    info = info.replace("Z", z_rotation);
+    document.getElementById("moRotation").innerHTML = info;
+  
+    TweenMax.to($x_axis, 1, {
+      css: {
+        transform: "translateX(" + x_rotation * speed_axis[1] + "vw)",
+      },
+      ease: Expo.easeOut,
+      overwrite: "all",
+    });
+    TweenMax.to($y_axis, 1, {
+      css: {
+        transform: "translateY(" + z_rotation * speed_axis[4] + "vh)",
+      },
+      ease: Expo.easeOut,
+      overwrite: "all",
+    });
+    TweenMax.to($layer_0, 1, {
+      css: {
+        transform:
+          "rotateX(" +
+          (x_rotation * speed_axis[1]) / 360 +
+          "deg) rotateY(" +
+          (z_rotation * speed_axis[1]) / 360 +
+          "deg);",
+      },
+      ease: Expo.easeOut,
+      overwrite: "all",
+    });
+    gyroMovement($layer_3, speed_axis[2], speed_axis[1], 2, 4);
+    gyroMovement($layer_2, speed_axis[2], speed_axis[1], 2, 4);
+    gyroMovement($layer_1, speed_axis[1], speed_axis[1], 4, 8);
+  }
+  function intervalHandler(interval) {
+    document.querySelector("#moInterval").innerHTML = interval;
+  }
+};
+}else {
+  document.querySelector("#activator").onclick = function () { alert('activated the parrallax !');
+   // MOUSE MOVEMENT CODE
 $(window).on("mousemove.parallax", function (event) {
   let p_pos_x = event.pageX,
     p_pos_y = event.pageY,
@@ -157,127 +239,6 @@ $(window).on("mousemove.parallax", function (event) {
     overwrite: "all",
   });
 });
+};
 }
 
-
-
-// GYROSCOPE CODE
-
-const speed_axis = [-6, -8, -10, -12];
-
-function gyroMovement(target, speed1, speed2, mult1, mult2) {
-  TweenMax.to(target, 1, {
-    css: {
-      transform:
-        "translateX(" +
-        (x_rotation * speed1) / mult1 +
-        "vw) translateY(" +
-        (z_rotation * -speed2) / mult2 +
-        "vh)",
-    },
-    ease: Expo.easeOut,
-    overwrite: "all",
-  });
-}
-
-function accelerationHandler(acceleration, targetId) {
-  let info,
-    xyz = "[X, Y, Z]";
-  x_acceleration = acceleration.x && acceleration.x.toFixed(2);
-  y_acceleration.toFixed(2) = acceleration.y && acceleration.y.toFixed(2) - 4.5;
-  z_acceleration = acceleration.z && acceleration.z.toFixed(2);
-
-  info = xyz.replace("X", x_acceleration);
-  info = info.replace("Y", y_acceleration);
-  info = info.replace("Z", z_acceleration);
-  document.getElementById(targetId).innerHTML = info;
-}
-
-function rotationHandler(rotation) {
-  let info,
-    xyz = "[X, Y, Z]";
-  x_rotation = rotation.alpha && rotation.alpha.toFixed(2);
-  y_rotation = rotation.beta && rotation.beta.toFixed(2);
-  z_rotation = rotation.gamma && rotation.gamma.toFixed(2);
-  info = xyz.replace("X", y_rotation);
-  info = info.replace("Y", x_rotation);
-  info = info.replace("Z", z_rotation);
-  document.getElementById("moRotation").innerHTML = info;
-
-  TweenMax.to($x_axis, 1, {
-    css: {
-      transform: "translateX(" + x_rotation * speed_axis[1] + "vw)",
-    },
-    ease: Expo.easeOut,
-    overwrite: "all",
-  });
-  TweenMax.to($y_axis, 1, {
-    css: {
-      transform: "translateY(" + z_rotation * speed_axis[4] + "vh)",
-    },
-    ease: Expo.easeOut,
-    overwrite: "all",
-  });
-  TweenMax.to($layer_0, 1, {
-    css: {
-      transform:
-        "rotateX(" +
-        (x_rotation * speed_axis[1]) / 360 +
-        "deg) rotateY(" +
-        (z_rotation * speed_axis[1]) / 360 +
-        "deg);",
-    },
-    ease: Expo.easeOut,
-    overwrite: "all",
-  });
-  gyroMovement($layer_3, speed_axis[2], speed_axis[1], 2, 4);
-  // TweenMax.to($layer_3, 1, {
-  //   css: {
-  //     transform:
-  //       "translateX(" +
-  //       (x_acceleration * speed_axis[2]) / 4 +
-  //       "vw) translateY(" +
-  //       (z_acceleration * -speed_axis[1]) / 2 +
-  //       "vh)",
-  //   },
-  //   ease: Expo.easeOut,
-  //   overwrite: "all",
-  // });
-  gyroMovement($layer_2, speed_axis[2], speed_axis[1], 2, 4);
-  // TweenMax.to($layer_2, 1, {
-  //   css: {
-  //     transform:
-  //       "translateX(" +
-  //       (x_acceleration * speed_axis[2]) / 6 +
-  //       "vw) translateY(" +
-  //       (z_acceleration * -speed_axis[1]) / 3 +
-  //       "vh)",
-  //   },
-  //   ease: Expo.easeOut,
-  //   overwrite: "all",
-  // });
-  gyroMovement($layer_1, speed_axis[1], speed_axis[1], 4, 8);
-  // TweenMax.to($layer_1, 1, {
-  //   css: {
-  //     transform:
-  //       "translateX(" +
-  //       (x_acceleration * speed_axis[1]) / 8 +
-  //       "vw) translateY(" +
-  //       (z_acceleration * -speed_axis[1]) / 4 +
-  //       "vh)",
-  //   },
-  //   ease: Expo.easeOut,
-  //   overwrite: "none",
-  // });
-
-  // TweenMax.to($layer_1, 1, {
-  //   css: {
-  //     transform: "rotate(" + (z_rotation / 10) * -180 + "deg)",
-  //   },
-  //   overwrite: "none",
-  // });
-}
-
-function intervalHandler(interval) {
-  document.querySelector("#moInterval").innerHTML = interval;
-}
