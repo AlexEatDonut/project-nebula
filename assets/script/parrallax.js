@@ -235,9 +235,9 @@ function accelerationHandler(acceleration, targetId) {
     css: {
       transform:
         "translateX(" +
-        (x_acceleration * speed_axis[2]) / 4 +
+        x_acceleration / 4 +
         "vw) translateY(" +
-        (y_acceleration * -speed_axis[1]) / 2 +
+        y_acceleration / 2 +
         "vh)",
     },
     ease: Expo.easeOut,
@@ -247,9 +247,9 @@ function accelerationHandler(acceleration, targetId) {
     css: {
       transform:
         "translateX(" +
-        (x_acceleration * speed_axis[2]) / 6 +
+        x_acceleration / 6 +
         "vw) translateY(" +
-        (y_acceleration * -speed_axis[1]) / 3 +
+        y_acceleration / 3 +
         "vh)",
     },
     ease: Expo.easeOut,
@@ -260,9 +260,9 @@ function accelerationHandler(acceleration, targetId) {
     css: {
       transform:
         "translateX(" +
-        (x_acceleration * speed_axis[1]) / 8 +
+        x_acceleration / 8 +
         "vw) translateY(" +
-        (y_acceleration * -speed_axis[1]) / 4 +
+        y_acceleration / 4 +
         "vh)",
     },
     ease: Expo.easeOut,
