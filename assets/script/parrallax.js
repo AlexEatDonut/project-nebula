@@ -180,7 +180,7 @@ function accelerationHandler(acceleration, targetId) {
     xyz = "[X, Y, Z]";
   x_acceleration = acceleration.x && acceleration.x.toFixed(2);
   y_acceleration = acceleration.y && acceleration.y.toFixed(2);
-  z_acceleration = acceleration.z && acceleration.z.toFixed(2);
+  z_acceleration = acceleration.z && acceleration.z.toFixed(2) - 9;
 
   // info = xyz.replace("X", s_pos.x);
   // info = info.replace("Y", s_pos.y);
@@ -198,7 +198,7 @@ function accelerationHandler(acceleration, targetId) {
   });
   TweenMax.to($y_axis, 1, {
     css: {
-      transform: "translateY(" + z_acceleration - 9 * speed_axis[1] + "vh)",
+      transform: "translateY(" + z_acceleration * speed_axis[1] + "vh)",
     },
     ease: Expo.easeOut,
     overwrite: "all",
