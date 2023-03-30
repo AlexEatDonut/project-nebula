@@ -223,14 +223,14 @@ function rotationHandler(rotation) {
 
   TweenMax.to($x_axis, 1, {
     css: {
-      transform: "translateX(" + x_rotation * speed_axis[1] + "vw)",
+      transform: "translateX(" + z_rotation * speed_axis[1] + "vw)",
     },
     ease: Expo.easeOut,
     overwrite: "all",
   });
   TweenMax.to($y_axis, 1, {
     css: {
-      transform: "translateY(" + z_rotation * speed_axis[4] + "vh)",
+      transform: "translateY(" + y_rotation * speed_axis[4] + "vh)",
     },
     ease: Expo.easeOut,
     overwrite: "all",
@@ -239,9 +239,9 @@ function rotationHandler(rotation) {
     css: {
       transform:
         "rotateX(" +
-        (x_rotation * speed_axis[1]) / 360 +
-        "deg) rotateY(" +
         (z_rotation * speed_axis[1]) / 360 +
+        "deg) rotateY(" +
+        (y_rotation * speed_axis[1]) / 360 +
         "deg);",
     },
     ease: Expo.easeOut,
