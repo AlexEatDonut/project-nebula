@@ -198,7 +198,7 @@ function accelerationHandler(acceleration, targetId) {
   });
   TweenMax.to($y_axis, 1, {
     css: {
-      transform: "translateY(" + z_acceleration * speed_axis[1] + "vh)",
+      transform: "translateY(" + z_acceleration - 4 * speed_axis[1] + "vh)",
     },
     ease: Expo.easeOut,
     overwrite: "all",
