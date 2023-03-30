@@ -1,7 +1,7 @@
 # teufort_parrallaxd
 
 Current version :
-Pre Alpha prototyping 2.0
+Pre Alpha prototyping 2.1
 
 A future project where i'll parrallax the landmarks of teufort from the 2007 hit multiplayer game Team Fortress 2.
 
