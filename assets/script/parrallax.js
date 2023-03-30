@@ -205,7 +205,12 @@ function accelerationHandler(acceleration, targetId) {
   });
   TweenMax.to($layer_0, 1, {
     css: {
-      transform: "rotateX(" + (x_acceleration * speed_axis[4]) / 180 + "deg);",
+      transform:
+        "rotateX(" +
+        (x_acceleration * speed_axis[1]) / 360 +
+        "deg) rotateY(" +
+        (z_acceleration * speed_axis[1]) / 360 +
+        "deg);",
     },
     ease: Expo.easeOut,
     overwrite: "all",
