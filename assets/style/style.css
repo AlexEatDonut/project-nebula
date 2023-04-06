@@ -76,16 +76,33 @@ main {
 .borderR {
   right: 0;
 }
-#background {
-  background-image: url(./../maps/ctf_2fort/bg.png);
-  background-repeat: no-repeat;
-  background-position: center;
-  position: absolute;
-  height: 120vh;
-  width: 120vw;
-  top: -10vh;
-  left: -10vw;
-  z-index: 5;
+
+@media (max-width: 580px) {
+  .layer-0 {
+    background-image: url(./../maps/ctf_2fort/bg.png);
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    background-position: center;
+    position: absolute;
+    height: 120vh;
+    width: 120vw;
+    top: -10vh;
+    left: -10vw;
+    z-index: 5;
+  }
+}
+@media (min-width: 580px) {
+  .layer-0 {
+    background-image: url(./../maps/ctf_2fort/bg.png);
+    background-repeat: repeat;
+    background-position: center;
+    position: absolute;
+    height: 120vh;
+    width: 130vw;
+    top: -10vh;
+    left: -15vw;
+    z-index: 5;
+  }
 }
 
 #x-axis {

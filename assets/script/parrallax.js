@@ -229,8 +229,10 @@ function accelerationHandler(
   var info,
     xyz = "[X, Y, Z]";
   x_acceleration = (acceleration.x && acceleration.x) * x_multiplier.toFixed(3);
-  y_acceleration =
-    ((acceleration.y && acceleration.y) - 15) * y_multiplier.toFixed(3);
+  y_acceleration = (
+    (acceleration.y && acceleration.y) * y_multiplier -
+    30
+  ).toFixed(3);
   z_acceleration = acceleration.z && acceleration.z.toFixed(3);
   info = xyz.replace("X", x_acceleration);
   info = info.replace("Y", y_acceleration);
