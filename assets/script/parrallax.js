@@ -111,14 +111,14 @@ if ("LinearAccelerationSensor" in window && "Gyroscope" in window) {
       );
     }
     lastReadingTimestamp = accelerometer.timestamp;
-    accelerationHandler(accelerometer, "moAccel");
+    // accelerationHandler(accelerometer, "moAccel");
   });
   accelerometer.start();
 
   if ("GravitySensor" in window) {
     let gravity = new GravitySensor();
     gravity.addEventListener("reading", (e) =>
-      accelerationHandler(gravity, "moAccelGrav")
+      accelerationHandler(gravity, "moAccelGrav", 2, 4)
     );
     gravity.start();
   }
@@ -136,8 +136,13 @@ if ("LinearAccelerationSensor" in window && "Gyroscope" in window) {
   document.getElementById("moApi").innerHTML = "Device Motion API";
 
   var onDeviceMotion = function (eventData) {
-    accelerationHandler(eventData.acceleration, "moAccel");
-    accelerationHandler(eventData.accelerationIncludingGravity, "moAccelGrav");
+    // accelerationHandler(eventData.acceleration, "moAccel");
+    accelerationHandler(
+      eventData.accelerationIncludingGravity,
+      "moAccelGrav",
+      2,
+      4
+    );
     rotationHandler(eventData.rotationRate);
     intervalHandler(eventData.interval);
   };
@@ -215,29 +220,31 @@ document.querySelector("#parrallaxActivator").onclick = function () {
 
 // GYROSCOPE CODE
 
-function accelerationHandler(acceleration, targetId) {
+function accelerationHandler(
+  acceleration,
+  targetId,
+  x_multiplier,
+  y_multiplier
+) {
   var info,
     xyz = "[X, Y, Z]";
-  x_acceleration = acceleration.x && acceleration.x.toFixed(3);
-  y_acceleration = acceleration.y && acceleration.y.toFixed(3);
+  x_acceleration = (acceleration.x && acceleration.x) * x_multiplier.toFixed(3);
+  y_acceleration = (acceleration.y && acceleration.y) * y_multiplier.toFixed(3);
   z_acceleration = acceleration.z && acceleration.z.toFixed(3);
-  info = xyz.replace("X", acceleration.x && acceleration.x.toFixed(3));
-  info = info.replace("Y", acceleration.y && acceleration.y.toFixed(3));
-  info = info.replace("Z", acceleration.z && acceleration.z.toFixed(3));
+  info = xyz.replace("X", x_acceleration);
+  info = info.replace("Y", y_acceleration);
+  info = info.replace("Z", z_acceleration);
   document.getElementById(targetId).innerHTML = info;
-  x_acceleration_base = (x_acceleration * 2).toFixed(3);
-  y_acceleration_base = (y_acceleration * 4).toFixed(3);
-  y_acceleration_base = (z_acceleration * 2).toFixed(3);
   TweenMax.to($x_axis, 1, {
     css: {
-      transform: "translateX(" + x_acceleration_base + "vw)",
+      transform: "translateX(" + x_acceleration + "vw)",
     },
     ease: Expo.easeOut,
     overwrite: "all",
   });
   TweenMax.to($y_axis, 1, {
     css: {
-      transform: "translateY(" + y_acceleration_base + "vh)",
+      transform: "translateY(" + y_acceleration + "vh)",
     },
     ease: Expo.easeOut,
     overwrite: "all",
