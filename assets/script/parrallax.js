@@ -281,9 +281,9 @@ function accelerationHandler(
     overwrite: "all",
   });
   gyroMovement($layer_0, 0.9, 5);
-  gyroMovement($layer_3, 0.85, 3);
-  gyroMovement($layer_2, 0.8, 2.75);
-  gyroMovement($layer_1, 0.75, 2.25);
+  gyroMovement($layer_3, 0.85, 3.5);
+  gyroMovement($layer_2, 0.8, 3);
+  gyroMovement($layer_1, 0.75, 2.75);
 }
 
 function rotationHandler(rotation) {
