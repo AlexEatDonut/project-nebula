@@ -118,7 +118,7 @@ if ("LinearAccelerationSensor" in window && "Gyroscope" in window) {
   if ("GravitySensor" in window) {
     let gravity = new GravitySensor();
     gravity.addEventListener("reading", (e) =>
-      accelerationHandler(gravity, "moAccelGrav", 2, 4)
+      accelerationHandler(gravity, "moAccelGrav", 4, 4)
     );
     gravity.start();
   }
@@ -140,7 +140,7 @@ if ("LinearAccelerationSensor" in window && "Gyroscope" in window) {
     accelerationHandler(
       eventData.accelerationIncludingGravity,
       "moAccelGrav",
-      2,
+      4,
       4
     );
     rotationHandler(eventData.rotationRate);
