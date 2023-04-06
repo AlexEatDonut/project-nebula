@@ -89,12 +89,40 @@ function gyroMovement(target, multiplier1, multiplier2) {
 
 // EVENT ON IMAGE LOADED
 
+$(".Click-here").on("click", function () {
+  $(".custom-model-main").addClass("model-open");
+});
+$(".close-btn, .bg-overlay").click(function () {
+  $(".custom-model-main").removeClass("model-open");
+});
+
+function onLoaded() {
+  alert("image is loaded successfully");
+  $("#popup--loading").removeClass("popup--in");
+  $("#popup--loading").addClass("popup--out");
+  $("#popup--loaded").removeClass("popup--out");
+  $("#popup--loaded").addClass("popup--in");
+  setTimeout(() => {
+    $("#popup--loaded").addClass("popup--out");
+    $("#popup--loaded").removeClass("popup--in");
+  }, 1500);
+}
+function onActivated() {
+  alert("activated the parrallax !");
+  $(".letterbox1").addClass("letterbox1--away");
+  $(".letterbox2").addClass("letterbox2--away");
+  $(".headerTop").addClass("headerTop__large");
+  $("#parrallaxMagic").removeClass("standBy");
+}
+
+// window.addEventListener("load", () => {
+//   setTimeout(onLoaded, 1500);
+// });
+
 let image = document.querySelector("#loading");
-let isLoadedSuccessfully = image.complete && image.naturalWidth !== 0;
 
 window.addEventListener("load", (event) => {
-  alert("image is loaded successfully");
-  image.classList.add("d-none");
+  setTimeout(onLoaded(), 1500);
 });
 
 // TESTING TO SEE IF THERE IS A GYROSCOPE
@@ -156,7 +184,7 @@ if ("LinearAccelerationSensor" in window && "Gyroscope" in window) {
 // PARRALLAX
 
 document.querySelector("#parrallaxActivator").onclick = function () {
-  alert("activated the parrallax !");
+  onActivated();
   // MOUSE MOVEMENT CODE
   $(window).on("mousemove.parallax", function (event) {
     let p_pos_x = event.pageX,

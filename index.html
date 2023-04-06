@@ -8,76 +8,92 @@
     <title>Teufort Parrallaxd</title>
   </head>
   <body>
-    <!-- <span class="letterbox borderL"></span>
-    <span class="letterbox borderR"></span> -->
+    <span class="letterbox letterbox1"></span>
+    <span class="letterbox letterbox2"></span>
     <div class="floatingLogo">
       <img src="https://remipeautre.fr/assets/img/rplogo1.svg" />
     </div>
-    <main id="mainMenu" class="menuOverlay">
-      <header>
-        <h1>Teufort Parrallaxd</h1>
-        Pre Alpha prototyping 3.11
+    <main>
+      <header id="mainMenu" class="menuOverlay">
+        <div class="headerTop">
+          <h1>Teufort Parrallaxd</h1>
+          <div class="headerTop--version">
+            <p>Current version :</p>
+            <p>Beta 1.0</p>
+          </div>
+        </div>
+        <nav>
+          <button id="parrallaxActivator">Watch 2fort in parrallax</button>
+          <button>Learn to make maps</button>
+          <button>About</button>
+        </nav>
       </header>
-      <section>
-        <figure id="loading" class="loadingIcon">
-          <img src="./assets/img/loading-gif.webp" />
-          <figcaption>Loading...</figcaption>
-        </figure>
+      <section class="popups">
+        <div class="popups__model popup--in" id="popup--loading">
+          <figure id="loading" class="loadingIcon">
+            <img src="./assets/img/loading-gif.webp" />
+            <figcaption>Loading...</figcaption>
+          </figure>
+        </div>
+        <div class="popups__model popup--out" id="popup--loaded">
+          <p>The images have been loaded successfully</p>
+        </div>
+        <div class="popups__model popup--out" id="popup--on">
+          <p>The parrallax is now ON !</p>
+        </div>
+        <div class="popups__model popup--out" id="popup--off">
+          <p>The parrallax is now OFF !</p>
+        </div>
       </section>
-      <nav>
-        <button id="parrallaxActivator">Explore 2fort</button>
-        <button>Learn to make maps</button>
-        <button>About</button>
-      </nav>
+      <div class="dev_info d-none">
+        <p>dev menu</p>
+        <p>the project isn't finished yet</p>
+        <table>
+          <tr>
+            <td>API info :</td>
+            <td id="moApi"></td>
+          </tr>
+          <tr>
+            <td>linear acceleration (excl. gravity)</td>
+            <td id="moAccel"></td>
+          </tr>
+          <tr>
+            <td>acceleration incl. gravity</td>
+            <td id="moAccelGrav"></td>
+          </tr>
+          <tr>
+            <td>rotation rate</td>
+            <td id="moRotation"></td>
+          </tr>
+          <tr>
+            <td>interval (ms)</td>
+            <td id="moInterval"></td>
+          </tr>
+          <tr>
+            <td>current p_left</td>
+            <td id="pLeftInfo"></td>
+          </tr>
+          <tr>
+            <td>current p_top</td>
+            <td id="pTopInfo"></td>
+          </tr>
+        </table>
+      </div>
+      <section id="parrallaxMagic" class="fullContainer standBy">
+        <div id="background" class="layer-0"></div>
+        <div id="x-axis" class="axis"></div>
+        <div id="y-axis" class="axis"></div>
+        <div id="item-1" class="item layer-1">
+          <img src="./assets/maps/ctf_2fort/deck1.png" class="bridge" />
+        </div>
+        <div id="item-2" class="item layer-2">
+          <img src="./assets/maps/ctf_2fort/bridge.png" class="blubuilding" />
+        </div>
+        <div id="item-3" class="item layer-3">
+          <img src="./assets/maps/ctf_2fort/redfort.png" class="bridge" />
+        </div>
+      </section>
     </main>
-    <div class="dev_info d-none">
-      <p>dev menu</p>
-      <p>the project isn't finished yet</p>
-      <table>
-        <tr>
-          <td>API info :</td>
-          <td id="moApi"></td>
-        </tr>
-        <tr>
-          <td>linear acceleration (excl. gravity)</td>
-          <td id="moAccel"></td>
-        </tr>
-        <tr>
-          <td>acceleration incl. gravity</td>
-          <td id="moAccelGrav"></td>
-        </tr>
-        <tr>
-          <td>rotation rate</td>
-          <td id="moRotation"></td>
-        </tr>
-        <tr>
-          <td>interval (ms)</td>
-          <td id="moInterval"></td>
-        </tr>
-        <tr>
-          <td>current p_left</td>
-          <td id="pLeftInfo"></td>
-        </tr>
-        <tr>
-          <td>current p_top</td>
-          <td id="pTopInfo"></td>
-        </tr>
-      </table>
-    </div>
-    <section id="parrallaxMagic" class="fullContainer">
-      <div id="background" class="layer-0"></div>
-      <div id="x-axis" class="axis"></div>
-      <div id="y-axis" class="axis"></div>
-      <div id="item-1" class="item layer-1">
-        <img src="./assets/maps/ctf_2fort/deck1.png" class="bridge" />
-      </div>
-      <div id="item-2" class="item layer-2">
-        <img src="./assets/maps/ctf_2fort/bridge.png" class="blubuilding" />
-      </div>
-      <div id="item-3" class="item layer-3">
-        <img src="./assets/maps/ctf_2fort/redfort.png" class="bridge" />
-      </div>
-    </section>
   </body>
   <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
   <script
