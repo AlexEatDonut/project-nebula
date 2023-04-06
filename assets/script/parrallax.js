@@ -252,55 +252,11 @@ function accelerationHandler(
     ease: Expo.easeOut,
     overwrite: "all",
   });
-  gyroMovement($layer_0, 8, 8);
-  gyroMovement($layer_3, 6, 6);
-  gyroMovement($layer_2, 3, 3);
-  gyroMovement($layer_1, 1.5, 1.5);
+  gyroMovement($layer_0, 6, 6);
+  gyroMovement($layer_3, 4, 4);
+  gyroMovement($layer_2, 2.25, 2.25);
+  gyroMovement($layer_1, 2, 2);
 }
-// TweenMax.to($layer_0, 1, {
-//   css: {
-//     transform: "rotateX(" + (x_acceleration * speed_axis[2]) / 180 + "deg);",
-//   },
-//   ease: Expo.easeOut,
-//   overwrite: "all",
-// });
-// TweenMax.to($layer_3, 1, {
-//   css: {
-//     transform:
-//       "translateX(" +
-//       x_acceleration / 4 +
-//       "vw) translateY(" +
-//       (y_acceleration - 4.5) / 2 +
-//       "vh)",
-//   },
-//   ease: Expo.easeOut,
-//   overwrite: "all",
-// });
-// TweenMax.to($layer_2, 1, {
-//   css: {
-//     transform:
-//       "translateX(" +
-//       x_acceleration / 6 +
-//       "vw) translateY(" +
-//       (y_acceleration - 4.5) / 3 +
-//       "vh)",
-//   },
-//   ease: Expo.easeOut,
-//   overwrite: "all",
-// });
-
-// TweenMax.to($layer_1, 1, {
-//   css: {
-//     transform:
-//       "translateX(" +
-//       x_acceleration / 8 +
-//       "vw) translateY(" +
-//       (y_acceleration - 4.5) / 4 +
-//       "vh)",
-//   },
-//   ease: Expo.easeOut,
-//   overwrite: "none",
-// });
 
 function rotationHandler(rotation) {
   var info,
