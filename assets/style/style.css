@@ -140,7 +140,7 @@ main {
   .layer-2,
   .layer-3 {
     transition-duration: 175ms;
-    left: 50vw;
+    left: -50vw;
   }
   .layer-0 {
     background-image: url(./../maps/ctf_2fort/bg.png);
