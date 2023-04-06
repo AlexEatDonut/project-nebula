@@ -126,9 +126,9 @@ main {
     background-position: center;
     position: absolute;
     height: 120vh;
-    width: 214vw;
+    width: 120vw;
     top: -10vh;
-    left: -15vw;
+    left: -10vw;
     z-index: 5;
   }
   .floatingLogo {
@@ -148,8 +148,8 @@ main {
   }
   .item {
     height: 120vh;
-    left: -50vw;
-    bottom: -15vh;
+    left: -100vw;
+    bottom: -25vh;
   }
   .layer-0 {
     background-image: url(./../maps/ctf_2fort/bg.png);
@@ -158,9 +158,9 @@ main {
     background-position: center;
     position: absolute;
     height: 120vh;
-    width: 120vw;
+    width: 214vw;
     top: -10vh;
-    left: -10vw;
+    left: -100vw;
     z-index: 5;
   }
   .floatingLogo {
