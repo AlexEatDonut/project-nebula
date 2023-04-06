@@ -97,7 +97,7 @@ $(".close-btn, .bg-overlay").click(function () {
 });
 
 function onLoaded() {
-  alert("image is loaded successfully");
+  // alert("image is loaded successfully");
   $("#popup--loading").removeClass("popup--in");
   $("#popup--loading").addClass("popup--out");
   $("#popup--loaded").removeClass("popup--out");
@@ -108,10 +108,11 @@ function onLoaded() {
   }, 1500);
 }
 function onActivated() {
-  alert("activated the parrallax !");
+  // alert("activated the parrallax !");
   $(".letterbox1").addClass("letterbox1--away");
   $(".letterbox2").addClass("letterbox2--away");
   $(".headerTop").addClass("headerTop__large");
+  $(".menuOverlay").addClass("menuOverlay__large");
   $("#parrallaxMagic").removeClass("standBy");
 }
 
@@ -280,10 +281,10 @@ function accelerationHandler(
     ease: Expo.easeOut,
     overwrite: "all",
   });
-  gyroMovement($layer_0, 0.9, 5);
-  gyroMovement($layer_3, 0.85, 3.5);
-  gyroMovement($layer_2, 0.8, 3);
-  gyroMovement($layer_1, 0.75, 2.75);
+  gyroMovement($layer_0, 0.8, 5);
+  gyroMovement($layer_3, 0.75, 3.5);
+  gyroMovement($layer_2, 0.7, 3);
+  gyroMovement($layer_1, 0.65, 2.75);
 }
 
 function rotationHandler(rotation) {

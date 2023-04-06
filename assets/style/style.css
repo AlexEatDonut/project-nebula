@@ -27,6 +27,23 @@ body {
   justify-content: center;
   color: white;
   background-color: rgba(0, 0, 0, 0.2);
+  transition-duration: 200ms;
+}
+
+.menuOverlay__actions button {
+  color: white;
+  font-size: 1.1rem;
+  padding: 0.5rem;
+  min-width: 6rem;
+  min-height: 3rem;
+  background-color: var(--dark);
+  border: 0.2rem var(--orange) solid;
+  border-radius: 1rem;
+  transition-duration: 50ms;
+}
+.menuOverlay__actions button:active {
+  background-color: var(--orange);
+  border: 0.2rem var(--dark) solid;
 }
 
 .loadingIcon {
@@ -67,87 +84,24 @@ body {
   transition-duration: 200ms;
 }
 
-#x-axis {
-  bottom: -50%;
-  left: 50%;
-  top: -50%;
-  width: 1px;
-}
-
-.custom-model-main {
-  text-align: center;
-  overflow: hidden;
-  position: fixed;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0; /* z-index: 1050; */
-  -webkit-overflow-scrolling: touch;
-  outline: 0;
-  opacity: 0;
-  -webkit-transition: opacity 0.15s linear, z-index 0.15;
-  -o-transition: opacity 0.15s linear, z-index 0.15;
-  transition: opacity 0.15s linear, z-index 0.15;
-  z-index: -1;
-  overflow-x: hidden;
-  overflow-y: auto;
-}
-
-.model-open {
-  z-index: 99999;
-  opacity: 1;
-  overflow: hidden;
-}
-.custom-model-inner {
-  -webkit-transform: translate(0, -25%);
-  -ms-transform: translate(0, -25%);
-  transform: translate(0, -25%);
-  -webkit-transition: -webkit-transform 0.3s ease-out;
-  -o-transition: -o-transform 0.3s ease-out;
-  transition: -webkit-transform 0.3s ease-out;
-  -o-transition: transform 0.3s ease-out;
-  transition: transform 0.3s ease-out;
-  transition: transform 0.3s ease-out, -webkit-transform 0.3s ease-out;
-  display: inline-block;
-  vertical-align: middle;
-  width: 600px;
-  margin: 30px auto;
-  max-width: 97%;
-}
-
-@media screen and (min-width: 800px) {
-  .custom-model-main:before {
-    content: "";
-    display: inline-block;
-    height: auto;
-    vertical-align: middle;
-    margin-right: -0px;
-    height: 100%;
-  }
-}
-@media screen and (max-width: 799px) {
-  .custom-model-inner {
-    margin-top: 45px;
-  }
-}
-
 .popups {
-  position: absolute;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   height: 100%;
   width: 100%;
   color: white;
 }
 .popups__model {
-  position: relative;
+  position: absolute;
   top: 50vh;
-  right: 35vw;
-  display: block;
   z-index: 200;
-  width: 30vw;
-  height: max-content;
+  display: flex;
   padding: 1rem;
   border-radius: 1rem;
-  border: 0.25rem solid orange;
+  border: 0.25rem solid var(--orange);
   background-color: var(--dark);
   text-align: center;
   transition-duration: 200ms;
@@ -158,6 +112,7 @@ body {
 }
 .popup--out {
   opacity: 0%;
+  right: -75vw;
 }
 #y-axis {
   left: 0;
@@ -174,19 +129,23 @@ body {
   bottom: -5vw;
   left: -7vh;
 }
-.headerTop__large {
+.headerTop {
+  position: fixed;
+  display: flex;
+  background-color: var(--dark);
+  border-top: 0.25rem solid var(--orange);
+  border-bottom: 0.25rem solid var(--orange);
+  transition-duration: 200ms;
+}
+.headerTop__large,
+.menuOverlay__large {
+  top: 0 !important;
   left: 0 !important;
-  max-height: 7vh !important ;
   flex-direction: row !important;
   justify-content: space-around;
   width: 100vw !important;
 }
-.letterbox1--away {
-  left: -50vw !important;
-}
-.letterbox2--away {
-  right: -50vw !important;
-}
+
 .item img {
   height: 100%;
   object-fit: contain;
@@ -202,6 +161,10 @@ body {
 #item-3 {
   z-index: 10;
 }
+/* ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// */
+/* BIGGER THAN A PHONE */
+/* ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// */
+
 @media screen and (min-width: 580px) {
   .layer-0,
   .layer-1,
@@ -231,18 +194,20 @@ body {
     width: 30vw;
     height: 100%;
   }
+  .menuOverlay__large {
+    top: 7vh !important;
+    height: 8vh !important;
+  }
   .headerTop {
-    position: fixed;
+    flex-direction: column;
+    align-items: center;
     top: 0;
     left: 35vw;
     width: 30vw;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    background-color: var(--dark);
-    border-top: 0.25rem solid orange;
-    border-bottom: 0.25rem solid orange;
-    transition-duration: 200ms;
+  }
+  .headerTop__large {
+    min-height: 7vh !important ;
+    max-height: 7vh !important ;
   }
   .headerTop--version {
     display: flex;
@@ -270,10 +235,20 @@ body {
   .letterbox2 {
     right: 0;
   }
-  .popups .popup {
-    width: 25%;
+  .popups__model {
+    width: 25vw;
+  }
+  .letterbox1--away {
+    left: -50vw !important;
+  }
+  .letterbox2--away {
+    right: -50vw !important;
   }
 }
+
+/* ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// */
+/* PHONE SIZE */
+/* ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// */
 @media screen and (max-width: 580px) {
   .layer-0,
   .layer-1,
@@ -303,11 +278,61 @@ body {
     width: 100%;
     height: 100%;
   }
+  .menuOverlay__large {
+    flex-direction: row !important;
+    top: 11vh !important;
+    height: 10vh !important;
+  }
+  .menuOverlay__large button {
+    min-height: 8vh;
+    max-height: 8vh;
+    max-width: 30vw;
+    font-size: 0.9rem;
+  }
+  .headerTop {
+    padding: 0 2rem 0 2rem;
+    flex-direction: row;
+    align-items: center;
+    top: 25vh;
+    left: 0;
+    width: 100vw;
+  }
+  .headerTop__large {
+    min-height: 10vh !important ;
+    max-height: 10vh !important ;
+  }
+  .headerTop > * {
+    width: 50%;
+  }
   .floatingLogo {
     width: 20%;
     position: fixed;
     bottom: 0;
     right: 0;
     z-index: 120;
+  }
+  .letterbox {
+    position: fixed;
+    width: 100vw;
+    height: 25vh;
+    left: 0;
+    z-index: 110;
+    background-color: rgba(20, 20, 20, 1);
+    transition-duration: 200ms;
+  }
+  .letterbox1 {
+    top: 0;
+  }
+  .letterbox2 {
+    bottom: 0;
+  }
+  .popups__model {
+    width: 80%;
+  }
+  .letterbox1--away {
+    top: -25vh !important;
+  }
+  .letterbox2--away {
+    bottom: -25vh !important;
   }
 }
