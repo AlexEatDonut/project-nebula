@@ -62,19 +62,19 @@ function gyroMovement(target, multiplier1, multiplier2) {
     css: {
       transform:
         "translateX(" +
-        x_acceleration * multiplier1 +
+        (x_acceleration / multiplier1).toFixed(3) +
         "vw) translateY(" +
-        y_acceleration * -multiplier2 +
+        (y_acceleration / multiplier2).toFixed(3) +
         "vh)",
     },
     ease: Expo.easeOut,
     overwrite: "all",
   });
 }
-// gyroMovement(x_axis, 2, 4);
+// gyroMovement(layer-0, 8, 8);
 // TweenMax.to($x_axis, 1, {
 //   css: {
-//     transform: "translateX(" + x_acceleration + "vw)",
+//     transform: "translateX(" + (x_acceleration / 4).toFixed(3) + "vw)",
 //   },
 //   ease: Expo.easeOut,
 //   overwrite: "all",
@@ -240,7 +240,7 @@ function accelerationHandler(
   document.getElementById(targetId).innerHTML = info;
   TweenMax.to($x_axis, 1, {
     css: {
-      transform: "translateX(" + x_acceleration + "vw)",
+      transform: "translateX(" + (x_acceleration / 4).toFixed(3) + "vw)",
     },
     ease: Expo.easeOut,
     overwrite: "all",
@@ -252,6 +252,10 @@ function accelerationHandler(
     ease: Expo.easeOut,
     overwrite: "all",
   });
+  gyroMovement($layer_0, 8, 8);
+  gyroMovement($layer_3, 6, 6);
+  gyroMovement($layer_2, 3, 3);
+  gyroMovement($layer_1, 1.5, 1.5);
 }
 // TweenMax.to($layer_0, 1, {
 //   css: {
