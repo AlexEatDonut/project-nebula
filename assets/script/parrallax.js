@@ -227,14 +227,14 @@ function accelerationHandler(acceleration, targetId) {
   document.getElementById(targetId).innerHTML = info;
   TweenMax.to($x_axis, 1, {
     css: {
-      transform: "translateX(" + x_acceleration * multiplier1 + "vw)",
+      transform: "translateX(" + x_acceleration * 2 + "vw)",
     },
     ease: Expo.easeOut,
     overwrite: "all",
   });
   TweenMax.to($y_axis, 1, {
     css: {
-      transform: "translateY(" + y_acceleration * multiplier2 + "vh)",
+      transform: "translateY(" + y_acceleration * 4 + "vh)",
     },
     ease: Expo.easeOut,
     overwrite: "all",
