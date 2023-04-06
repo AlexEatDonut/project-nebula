@@ -212,7 +212,7 @@ body {
   }
   .item {
     height: 120vh;
-    bottom: -4vw;
+    bottom: -5vw;
     left: -7vh;
   }
   .layer-0 {
@@ -284,7 +284,7 @@ body {
   .item {
     height: 120vh;
     left: -100vw;
-    bottom: -25vh;
+    bottom: -20vh;
   }
   .layer-0 {
     background-image: url(./../maps/ctf_2fort/bg.png);
