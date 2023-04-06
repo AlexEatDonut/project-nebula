@@ -57,20 +57,35 @@ function testDevMenu() {
 
 // GYROSCOPE function
 
-function gyroMovement(target, speed1, speed2, multiplier1, multiplier2) {
+function gyroMovement(target, multiplier1, multiplier2) {
   TweenMax.to(target, 1, {
     css: {
       transform:
         "translateX(" +
-        (z_acceleration * speed1) / multiplier1 +
+        x_acceleration * multiplier1 +
         "vw) translateY(" +
-        (y_acceleration * -speed2) / multiplier2 +
+        y_acceleration * -multiplier2 +
         "vh)",
     },
     ease: Expo.easeOut,
     overwrite: "all",
   });
 }
+// gyroMovement(x_axis, 2, 4);
+// TweenMax.to($x_axis, 1, {
+//   css: {
+//     transform: "translateX(" + x_acceleration + "vw)",
+//   },
+//   ease: Expo.easeOut,
+//   overwrite: "all",
+// });
+// TweenMax.to($y_axis, 1, {
+//   css: {
+//     transform: "translateY(" + y_acceleration + "vh)",
+//   },
+//   ease: Expo.easeOut,
+//   overwrite: "all",
+// });
 
 // EVENT ON IMAGE LOADED
 
@@ -212,14 +227,14 @@ function accelerationHandler(acceleration, targetId) {
   document.getElementById(targetId).innerHTML = info;
   TweenMax.to($x_axis, 1, {
     css: {
-      transform: "translateX(" + x_acceleration + "vw)",
+      transform: "translateX(" + x_acceleration * multiplier1 + "vw)",
     },
     ease: Expo.easeOut,
     overwrite: "all",
   });
   TweenMax.to($y_axis, 1, {
     css: {
-      transform: "translateY(" + y_acceleration + "vh)",
+      transform: "translateY(" + y_acceleration * multiplier2 + "vh)",
     },
     ease: Expo.easeOut,
     overwrite: "all",
