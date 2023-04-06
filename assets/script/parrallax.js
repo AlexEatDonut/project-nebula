@@ -225,16 +225,19 @@ function accelerationHandler(acceleration, targetId) {
   info = info.replace("Y", acceleration.y && acceleration.y.toFixed(3));
   info = info.replace("Z", acceleration.z && acceleration.z.toFixed(3));
   document.getElementById(targetId).innerHTML = info;
+  x_acceleration_base = (x_acceleration * 2).toFixed(3);
+  y_acceleration_base = (y_acceleration * 4).toFixed(3);
+  y_acceleration_base = (z_acceleration * 2).toFixed(3);
   TweenMax.to($x_axis, 1, {
     css: {
-      transform: "translateX(" + x_acceleration * 2 + "vw)",
+      transform: "translateX(" + x_acceleration_base + "vw)",
     },
     ease: Expo.easeOut,
     overwrite: "all",
   });
   TweenMax.to($y_axis, 1, {
     css: {
-      transform: "translateY(" + y_acceleration * 4 + "vh)",
+      transform: "translateY(" + y_acceleration_base + "vh)",
     },
     ease: Expo.easeOut,
     overwrite: "all",
