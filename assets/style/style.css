@@ -158,9 +158,9 @@ main {
     background-position: center;
     position: absolute;
     height: 120vh;
-    width: 214vw;
+    width: 240vw;
     top: -10vh;
-    left: -57vw;
+    left: -70vw;
     z-index: 5;
   }
   .floatingLogo {
