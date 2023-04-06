@@ -252,10 +252,10 @@ function accelerationHandler(
     ease: Expo.easeOut,
     overwrite: "all",
   });
-  gyroMovement($layer_0, 12, 6);
-  gyroMovement($layer_3, 8, 4);
-  gyroMovement($layer_2, 5, 2.25);
-  gyroMovement($layer_1, 4, 2);
+  gyroMovement($layer_0, 0.9, 6);
+  gyroMovement($layer_3, 0.85, 4);
+  gyroMovement($layer_2, 0.8, 2.25);
+  gyroMovement($layer_1, 0.75, 2);
 }
 
 function rotationHandler(rotation) {
