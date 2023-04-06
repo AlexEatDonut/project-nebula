@@ -56,16 +56,15 @@ function testDevMenu() {
 }
 
 // GYROSCOPE function
-const speed_axis = [-6, -8, -10, -12];
 
-function gyroMovement(target, speed1, speed2, mult1, mult2) {
+function gyroMovement(target, speed1, speed2, multiplier1, multiplier2) {
   TweenMax.to(target, 1, {
     css: {
       transform:
         "translateX(" +
-        (z_acceleration * speed1) / mult1 +
+        (z_acceleration * speed1) / multiplier1 +
         "vw) translateY(" +
-        (y_acceleration * -speed2) / mult2 +
+        (y_acceleration * -speed2) / multiplier2 +
         "vh)",
     },
     ease: Expo.easeOut,
@@ -100,6 +99,7 @@ if ("LinearAccelerationSensor" in window && "Gyroscope" in window) {
     accelerationHandler(accelerometer, "moAccel");
   });
   accelerometer.start();
+
   if ("GravitySensor" in window) {
     let gravity = new GravitySensor();
     gravity.addEventListener("reading", (e) =>
@@ -119,17 +119,21 @@ if ("LinearAccelerationSensor" in window && "Gyroscope" in window) {
   gyroscope.start();
 } else if ("DeviceMotionEvent" in window) {
   document.getElementById("moApi").innerHTML = "Device Motion API";
-  let onDeviceMotion = function (eventData) {
-    // accelerationHandler(eventData.acceleration, "moAccel");
+
+  var onDeviceMotion = function (eventData) {
+    accelerationHandler(eventData.acceleration, "moAccel");
     accelerationHandler(eventData.accelerationIncludingGravity, "moAccelGrav");
     rotationHandler(eventData.rotationRate);
     intervalHandler(eventData.interval);
   };
+
   window.addEventListener("devicemotion", onDeviceMotion, false);
 } else {
-  document.querySelector("#moApi").innerHTML =
+  document.getElementById("moApi").innerHTML =
     "No Accelerometer & Gyroscope API available";
 }
+
+// PARRALLAX
 
 document.querySelector("#parrallaxActivator").onclick = function () {
   alert("activated the parrallax !");
@@ -197,81 +201,77 @@ document.querySelector("#parrallaxActivator").onclick = function () {
 // GYROSCOPE CODE
 
 function accelerationHandler(acceleration, targetId) {
-  let info,
+  var info,
     xyz = "[X, Y, Z]";
-  x_acceleration = acceleration.x && acceleration.x.toFixed(2);
-  y_acceleration = acceleration.y && acceleration.y.toFixed(2);
-  z_acceleration = acceleration.z && acceleration.z.toFixed(2);
-
-  // info = xyz.replace("X", s_pos.x);
-  // info = info.replace("Y", s_pos.y);
-  // info = info.replace("Z", z);
-  info = xyz.replace("X", x_acceleration);
-  info = info.replace("Y", y_acceleration);
-  info = info.replace("Z", z_acceleration);
+  x_acceleration = acceleration.x && acceleration.x.toFixed(3);
+  y_acceleration = acceleration.y && acceleration.y.toFixed(3);
+  z_acceleration = acceleration.z && acceleration.z.toFixed(3);
+  info = xyz.replace("X", acceleration.x && acceleration.x.toFixed(3));
+  info = info.replace("Y", acceleration.y && acceleration.y.toFixed(3));
+  info = info.replace("Z", acceleration.z && acceleration.z.toFixed(3));
   document.getElementById(targetId).innerHTML = info;
   TweenMax.to($x_axis, 1, {
     css: {
-      transform: "translateX(" + x_acceleration * speed_axis[2] + "vw)",
+      transform: "translateX(" + x_acceleration + "vw)",
     },
     ease: Expo.easeOut,
     overwrite: "all",
   });
   TweenMax.to($y_axis, 1, {
     css: {
-      transform: "translateY(" + y_acceleration * speed_axis[1] + "vh)",
+      transform: "translateY(" + y_acceleration + "vh)",
     },
     ease: Expo.easeOut,
     overwrite: "all",
-  });
-  TweenMax.to($layer_0, 1, {
-    css: {
-      transform: "rotateX(" + (x_acceleration * speed_axis[2]) / 180 + "deg);",
-    },
-    ease: Expo.easeOut,
-    overwrite: "all",
-  });
-  TweenMax.to($layer_3, 1, {
-    css: {
-      transform:
-        "translateX(" +
-        x_acceleration / 4 +
-        "vw) translateY(" +
-        (y_acceleration - 4.5) / 2 +
-        "vh)",
-    },
-    ease: Expo.easeOut,
-    overwrite: "all",
-  });
-  TweenMax.to($layer_2, 1, {
-    css: {
-      transform:
-        "translateX(" +
-        x_acceleration / 6 +
-        "vw) translateY(" +
-        (y_acceleration - 4.5) / 3 +
-        "vh)",
-    },
-    ease: Expo.easeOut,
-    overwrite: "all",
-  });
-
-  TweenMax.to($layer_1, 1, {
-    css: {
-      transform:
-        "translateX(" +
-        x_acceleration / 8 +
-        "vw) translateY(" +
-        (y_acceleration - 4.5) / 4 +
-        "vh)",
-    },
-    ease: Expo.easeOut,
-    overwrite: "none",
   });
 }
+// TweenMax.to($layer_0, 1, {
+//   css: {
+//     transform: "rotateX(" + (x_acceleration * speed_axis[2]) / 180 + "deg);",
+//   },
+//   ease: Expo.easeOut,
+//   overwrite: "all",
+// });
+// TweenMax.to($layer_3, 1, {
+//   css: {
+//     transform:
+//       "translateX(" +
+//       x_acceleration / 4 +
+//       "vw) translateY(" +
+//       (y_acceleration - 4.5) / 2 +
+//       "vh)",
+//   },
+//   ease: Expo.easeOut,
+//   overwrite: "all",
+// });
+// TweenMax.to($layer_2, 1, {
+//   css: {
+//     transform:
+//       "translateX(" +
+//       x_acceleration / 6 +
+//       "vw) translateY(" +
+//       (y_acceleration - 4.5) / 3 +
+//       "vh)",
+//   },
+//   ease: Expo.easeOut,
+//   overwrite: "all",
+// });
+
+// TweenMax.to($layer_1, 1, {
+//   css: {
+//     transform:
+//       "translateX(" +
+//       x_acceleration / 8 +
+//       "vw) translateY(" +
+//       (y_acceleration - 4.5) / 4 +
+//       "vh)",
+//   },
+//   ease: Expo.easeOut,
+//   overwrite: "none",
+// });
 
 function rotationHandler(rotation) {
-  let info,
+  var info,
     xyz = "[X, Y, Z]";
   x_rotation = rotation.alpha && rotation.alpha.toFixed(2);
   y_rotation = rotation.beta && rotation.beta.toFixed(2);
