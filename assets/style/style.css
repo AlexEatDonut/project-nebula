@@ -79,7 +79,6 @@ main {
 #background {
   background-image: url(./../maps/ctf_2fort/bg.png);
   background-repeat: no-repeat;
-  background-size: 100% 100%;
   background-position: center;
   position: absolute;
   height: 120vh;
