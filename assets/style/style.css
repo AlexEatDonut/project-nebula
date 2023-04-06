@@ -115,6 +115,11 @@ main {
   #background {
     transition-duration: 20ms;
   }
+  .item {
+    height: 120vh;
+    bottom: -5vw;
+    left: -7vh;
+  }
   .layer-0 {
     background-image: url(./../maps/ctf_2fort/bg.png);
     background-repeat: repeat;
@@ -140,7 +145,11 @@ main {
   .layer-2,
   .layer-3 {
     transition-duration: 175ms;
+  }
+  .item {
+    height: 120vh;
     left: -50vw;
+    bottom: -15vh;
   }
   .layer-0 {
     background-image: url(./../maps/ctf_2fort/bg.png);
