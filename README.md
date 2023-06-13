@@ -3,7 +3,7 @@
 Current version :
 Beta 1.1.2
 
-A future project where i'll parrallax the landmarks of teufort from the 2007 hit multiplayer game Team Fortress 2.
+A future project where i'll parallax the landmarks of teufort from the 2007 hit multiplayer game Team Fortress 2.
 
 Documentation page about how to import the effect of the parrallaxd to your own website coming soon.
 
