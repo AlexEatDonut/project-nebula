@@ -174,10 +174,12 @@ body {
     transition-duration: 20ms;
   }
   .item {
-    height: 120vh;
-    bottom: -5vw;
-    left: -7vh;
+    aspect-ratio: 16/9;
+    height: 125%;
+    top: -1.5%;
+    left: -3.2%;
   }
+
   .layer-0 {
     background-image: url(./../maps/ctf_2fort/bg.png);
     background-repeat: repeat;
@@ -245,7 +247,6 @@ body {
     right: -50vw !important;
   }
 }
-
 /* ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// */
 /* PHONE SIZE */
 /* ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// */
