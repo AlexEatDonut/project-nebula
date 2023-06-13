@@ -1,7 +1,7 @@
 # teufort_parrallaxd
 
 Current version :
-Beta 1.1.1
+Beta 1.1.2
 
 A future project where i'll parrallax the landmarks of teufort from the 2007 hit multiplayer game Team Fortress 2.
 
