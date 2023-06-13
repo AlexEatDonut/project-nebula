@@ -28,7 +28,8 @@ let $layer_0 = $(".layer-0"),
   container_w = $container.width(),
   container_h = $container.height(),
   p_left = 0,
-  p_top = 0;
+  p_top = 0,
+  parrallaxd_status = false;
 
 let winWidth = $(window).width();
 let winHeight = $(window).height();
@@ -113,7 +114,15 @@ function onActivated() {
   $(".letterbox2").addClass("letterbox2--away");
   $(".headerTop").addClass("headerTop__large");
   $(".menuOverlay").addClass("menuOverlay__large");
-  $("#parrallaxMagic").removeClass("standBy");
+  $("#parrallaxd").removeClass("standBy");
+}
+function onDeactivated() {
+  // alert("activated the parrallax !");
+  $(".letterbox1").removeClass("letterbox1--away");
+  $(".letterbox2").removeClass("letterbox2--away");
+  $(".headerTop").removeClass("headerTop__large");
+  $(".menuOverlay").removeClass("menuOverlay__large");
+  $("#parrallaxd").addClass("standBy");
 }
 
 // window.addEventListener("load", () => {
@@ -185,66 +194,148 @@ if ("LinearAccelerationSensor" in window && "Gyroscope" in window) {
 // PARRALLAX
 
 document.querySelector("#parrallaxActivator").onclick = function () {
-  onActivated();
-  // MOUSE MOVEMENT CODE
-  $(window).on("mousemove.parallax", function (event) {
-    let p_pos_x = event.pageX,
-      p_pos_y = event.pageY,
-      p_left = container_w / 2 - p_pos_x;
-    p_top = container_h / 2 - p_pos_y;
-    document.querySelector("#pLeftInfo").innerHTML = p_left;
-    document.querySelector("#pTopInfo").innerHTML = p_top;
-    TweenMax.to($x_axis, 1, {
-      css: {
-        transform: "translateX(" + p_left * -1 + "px)",
-      },
-      ease: Expo.easeOut,
-      overwrite: "all",
-    });
-    TweenMax.to($y_axis, 1, {
-      css: {
-        transform: "translateY(" + p_top * -1 + "px)",
-      },
-      ease: Expo.easeOut,
-      overwrite: "all",
-    });
+  if (parrallaxd_status == false) {
+    onActivated();
+    parrallaxd_status = true;
+    // MOUSE MOVEMENT CODE
+    $(window).on("mousemove.parallax", function (event) {
+      let p_pos_x = event.pageX,
+        p_pos_y = event.pageY,
+        p_left = container_w / 2 - p_pos_x;
+      p_top = container_h / 2 - p_pos_y;
+      document.querySelector("#pLeftInfo").innerHTML = p_left;
+      document.querySelector("#pTopInfo").innerHTML = p_top;
+      TweenMax.to($x_axis, 1, {
+        css: {
+          transform: "translateX(" + p_left * -1 + "px)",
+        },
+        ease: Expo.easeOut,
+        overwrite: "all",
+      });
+      TweenMax.to($y_axis, 1, {
+        css: {
+          transform: "translateY(" + p_top * -1 + "px)",
+        },
+        ease: Expo.easeOut,
+        overwrite: "all",
+      });
 
-    TweenMax.to($layer_3, 1, {
-      css: {
-        transform:
-          "translateX(" + p_left / 20 + "px) translateY(" + p_top / 10 + "px)",
-      },
-      ease: Expo.easeOut,
-      overwrite: "all",
-    });
+      TweenMax.to($layer_3, 1, {
+        css: {
+          transform:
+            "translateX(" +
+            p_left / 20 +
+            "px) translateY(" +
+            p_top / 10 +
+            "px)",
+        },
+        ease: Expo.easeOut,
+        overwrite: "all",
+      });
 
-    TweenMax.to($layer_2, 1, {
-      css: {
-        transform:
-          "translateX(" + p_left / 18 + "px) translateY(" + p_top / 9 + "px)",
-      },
-      ease: Expo.easeOut,
-      overwrite: "all",
-    });
+      TweenMax.to($layer_2, 1, {
+        css: {
+          transform:
+            "translateX(" + p_left / 18 + "px) translateY(" + p_top / 9 + "px)",
+        },
+        ease: Expo.easeOut,
+        overwrite: "all",
+      });
 
-    TweenMax.to($layer_1, 1, {
-      css: {
-        transform:
-          "translateX(" + p_left / 16 + "px) translateY(" + p_top / 8 + "px)",
-      },
-      ease: Expo.easeOut,
-      overwrite: "all",
-    });
+      TweenMax.to($layer_1, 1, {
+        css: {
+          transform:
+            "translateX(" + p_left / 16 + "px) translateY(" + p_top / 8 + "px)",
+        },
+        ease: Expo.easeOut,
+        overwrite: "all",
+      });
 
-    TweenMax.to($layer_0, 1, {
-      css: {
-        transform:
-          "translateX(" + p_left / 64 + "px) translateY(" + p_top / 32 + "px)",
-      },
-      ease: Expo.easeOut,
-      overwrite: "all",
+      TweenMax.to($layer_0, 1, {
+        css: {
+          transform:
+            "translateX(" +
+            p_left / 64 +
+            "px) translateY(" +
+            p_top / 32 +
+            "px)",
+        },
+        ease: Expo.easeOut,
+        overwrite: "all",
+      });
     });
-  });
+  } else {
+    onDeactivated();
+    parrallaxd_status = false;
+    // MOUSE MOVEMENT CODE
+    $(window).on("mousemove.parallax", function (event) {
+      console.log("resetting position");
+      let p_pos_x = 0,
+        p_pos_y = 0,
+        p_left = container_w / 2 - p_pos_x;
+      p_top = container_h / 2 - p_pos_y;
+      document.querySelector("#pLeftInfo").innerHTML = p_left;
+      document.querySelector("#pTopInfo").innerHTML = p_top;
+      TweenMax.to($x_axis, 1, {
+        css: {
+          transform: "translateX(" + p_left * -1 + "px)",
+        },
+        ease: Expo.easeOut,
+        overwrite: "all",
+      });
+      TweenMax.to($y_axis, 1, {
+        css: {
+          transform: "translateY(" + p_top * -1 + "px)",
+        },
+        ease: Expo.easeOut,
+        overwrite: "all",
+      });
+
+      TweenMax.to($layer_3, 1, {
+        css: {
+          transform:
+            "translateX(" +
+            p_left / 20 +
+            "px) translateY(" +
+            p_top / 10 +
+            "px)",
+        },
+        ease: Expo.easeOut,
+        overwrite: "all",
+      });
+
+      TweenMax.to($layer_2, 1, {
+        css: {
+          transform:
+            "translateX(" + p_left / 18 + "px) translateY(" + p_top / 9 + "px)",
+        },
+        ease: Expo.easeOut,
+        overwrite: "all",
+      });
+
+      TweenMax.to($layer_1, 1, {
+        css: {
+          transform:
+            "translateX(" + p_left / 16 + "px) translateY(" + p_top / 8 + "px)",
+        },
+        ease: Expo.easeOut,
+        overwrite: "all",
+      });
+
+      TweenMax.to($layer_0, 1, {
+        css: {
+          transform:
+            "translateX(" +
+            p_left / 64 +
+            "px) translateY(" +
+            p_top / 32 +
+            "px)",
+        },
+        ease: Expo.easeOut,
+        overwrite: "all",
+      });
+    });
+  }
 };
 
 // GYROSCOPE CODE

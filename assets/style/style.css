@@ -26,24 +26,46 @@ body {
   align-items: center;
   justify-content: center;
   color: white;
-  background-color: rgba(0, 0, 0, 0.2);
   transition-duration: 200ms;
+}
+.menuOverlay__actions {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 2rem;
 }
 
 .menuOverlay__actions button {
   color: white;
   font-size: 1.1rem;
   padding: 0.5rem;
-  min-width: 6rem;
-  min-height: 3rem;
+  width: 7rem;
+  height: 10vh;
   background-color: var(--dark);
   border: 0.2rem var(--orange) solid;
   border-radius: 1rem;
   transition-duration: 50ms;
+  cursor: pointer;
 }
 .menuOverlay__actions button:active {
   background-color: var(--orange);
   border: 0.2rem var(--dark) solid;
+}
+.menuOverlay__large > .menuOverlay__actions {
+  width: 100%;
+  height: 6rem;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.2);
+}
+.menuOverlay__large > .menuOverlay__actions > button {
+  width: 15rem;
+  height: 4rem;
 }
 
 .loadingIcon {
@@ -142,10 +164,10 @@ body {
   top: 0 !important;
   left: 0 !important;
   flex-direction: row !important;
+
   justify-content: space-around;
   width: 100vw !important;
 }
-
 .item img {
   height: 100%;
   object-fit: contain;
@@ -198,7 +220,7 @@ body {
   }
   .menuOverlay__large {
     top: 7vh !important;
-    height: 8vh !important;
+    height: 6rem;
   }
   .headerTop {
     flex-direction: column;
