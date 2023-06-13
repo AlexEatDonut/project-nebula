@@ -306,17 +306,55 @@ body {
     top: 11vh !important;
     height: 10vh !important;
   }
-  .menuOverlay__large button {
-    min-height: 8vh;
-    max-height: 8vh;
-    max-width: 30vw;
-    font-size: 0.9rem;
+
+  .menuOverlay__actions {
+    margin-top: 25vh;
+    height: 50vh;
+  }
+  .menuOverlay__large > .menuOverlay__actions {
+    margin-top: 10vh;
+    height: 10vh;
+  }
+  .menuOverlay__actions button {
+    color: white;
+    font-size: 1.1rem;
+    padding: 0.5rem;
+    width: 40vw;
+    height: 15vh;
+    background-color: var(--dark);
+    border: 0.2rem var(--orange) solid;
+    border-radius: 1rem;
+    transition-duration: 50ms;
+    cursor: pointer;
+  }
+  .menuOverlay__actions button:active {
+    background-color: var(--orange);
+    border: 0.2rem var(--dark) solid;
+  }
+  .menuOverlay__large > .menuOverlay__actions {
+    margin-top: 0;
+    padding: 0.25rem;
+    left: 0;
+    top: calc(10vh + 0.5rem);
+    position: fixed;
+    width: 25vw;
+    height: calc(100vh - 10vh);
+    flex-direction: column;
+    justify-content: center;
+    gap: 1rem;
+    background-color: rgba(0, 0, 0, 0.2);
+  }
+  .menuOverlay__large > .menuOverlay__actions > button {
+    /* transform: rotate(-90deg); */
+    width: 20vw;
+    height: 20wh;
+    font-size: 0.5rem;
   }
   .headerTop {
     padding: 0 2rem 0 2rem;
     flex-direction: row;
     align-items: center;
-    top: 25vh;
+    top: 12vh;
     left: 0;
     width: 100vw;
   }
@@ -337,7 +375,7 @@ body {
   .letterbox {
     position: fixed;
     width: 100vw;
-    height: 25vh;
+    height: 12vh;
     left: 0;
     z-index: 110;
     background-color: rgba(20, 20, 20, 1);
