@@ -21,7 +21,7 @@ let $layer_0 = $(".layer-0"),
   container_h = $container.height(),
   p_left = 0,
   p_top = 0,
-  parrallaxd_status = false;
+  parrallaxd_status = true;
 
 let winWidth = $(window).width();
 let winHeight = $(window).height();
