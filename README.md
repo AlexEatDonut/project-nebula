@@ -39,6 +39,6 @@ Code to add to your HTML
         </div>
       </section>
 
-The Js script you'll need is :
+The Js script you'll need to download and use locally is :
 
     https://raw.githubusercontent.com/AlexEatDonut/teufort_parrallaxd/main/assets/script/parrallaxd.js
