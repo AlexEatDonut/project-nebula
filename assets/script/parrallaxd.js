@@ -49,8 +49,6 @@ function gyroMovement(target, multiplier1, multiplier2) {
 // TESTING TO SEE IF THERE IS A GYROSCOPE
 
 if ("LinearAccelerationSensor" in window && "Gyroscope" in window) {
-  document.getElementById("moApi").innerHTML = "Generic Sensor API";
-
   let lastReadingTimestamp;
   let accelerometer = new LinearAccelerationSensor();
   accelerometer.addEventListener("reading", (e) => {
@@ -81,8 +79,6 @@ if ("LinearAccelerationSensor" in window && "Gyroscope" in window) {
   );
   gyroscope.start();
 } else if ("DeviceMotionEvent" in window) {
-  document.getElementById("moApi").innerHTML = "Device Motion API";
-
   var onDeviceMotion = function (eventData) {
     accelerationHandler(
       eventData.accelerationIncludingGravity,
@@ -95,9 +91,6 @@ if ("LinearAccelerationSensor" in window && "Gyroscope" in window) {
   };
 
   window.addEventListener("devicemotion", onDeviceMotion, false);
-} else {
-  document.getElementById("moApi").innerHTML =
-    "No Accelerometer & Gyroscope API available";
 }
 
 // PARRALLAX
