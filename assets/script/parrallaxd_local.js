@@ -15,6 +15,8 @@ let $layer_0 = $(".layer-0"),
   $layer_1 = $(".layer-1"),
   $layer_2 = $(".layer-2"),
   $layer_3 = $(".layer-3"),
+  $x_axis = $(".x-axis"),
+  $y_axis = $(".y-axis"),
   $container = $("body"),
   isMenuOn = "false",
   loadingImg = $("#loadingImg"),
@@ -29,6 +31,22 @@ let winHeight = $(window).height();
 
 let s_pos_x = $.percentage(100, winWidth);
 let s_pos_y = $.percentage(100, winWidth);
+
+// DEV MENU
+document.querySelector(".floatingLogo").addEventListener("click", function () {
+  testDevMenu();
+});
+
+function testDevMenu() {
+  if (isMenuOn == false) {
+    document.querySelector(".dev_info").classList.add("d-none");
+
+    isMenuOn = true;
+  } else {
+    document.querySelector(".dev_info").classList.remove("d-none");
+    isMenuOn = false;
+  }
+}
 
 // GYROSCOPE function
 
@@ -47,6 +65,49 @@ function gyroMovement(target, multiplier1, multiplier2) {
   });
 }
 
+// EVENT ON IMAGE LOADED
+
+$(".Click-here").on("click", function () {
+  $(".custom-model-main").addClass("model-open");
+});
+$(".close-btn, .bg-overlay").click(function () {
+  $(".custom-model-main").removeClass("model-open");
+});
+
+function onLoaded() {
+  // alert("image is loaded successfully");
+  $("#popup--loading").removeClass("popup--in");
+  $("#popup--loading").addClass("popup--out");
+  $("#popup--loaded").removeClass("popup--out");
+  $("#popup--loaded").addClass("popup--in");
+  setTimeout(() => {
+    $("#popup--loaded").addClass("popup--out");
+    $("#popup--loaded").removeClass("popup--in");
+  }, 1500);
+}
+function onActivated() {
+  // alert("activated the parrallax !");
+  $(".letterbox1").addClass("letterbox1--away");
+  $(".letterbox2").addClass("letterbox2--away");
+  $(".headerTop").addClass("headerTop__large");
+  $(".menuOverlay").addClass("menuOverlay__large");
+  $("#parrallaxd").removeClass("standBy");
+}
+function onDeactivated() {
+  // alert("activated the parrallax !");
+  $(".letterbox1").removeClass("letterbox1--away");
+  $(".letterbox2").removeClass("letterbox2--away");
+  $(".headerTop").removeClass("headerTop__large");
+  $(".menuOverlay").removeClass("menuOverlay__large");
+  $("#parrallaxd").addClass("standBy");
+}
+
+let image = document.querySelector("#loading");
+
+window.addEventListener("load", (event) => {
+  setTimeout(onLoaded(), 1500);
+});
+
 // TESTING TO SEE IF THERE IS A GYROSCOPE
 
 if ("LinearAccelerationSensor" in window && "Gyroscope" in window) {
@@ -61,6 +122,7 @@ if ("LinearAccelerationSensor" in window && "Gyroscope" in window) {
       );
     }
     lastReadingTimestamp = accelerometer.timestamp;
+    // accelerationHandler(accelerometer, "moAccel");
   });
   accelerometer.start();
 
@@ -85,6 +147,7 @@ if ("LinearAccelerationSensor" in window && "Gyroscope" in window) {
   document.getElementById("moApi").innerHTML = "Device Motion API";
 
   var onDeviceMotion = function (eventData) {
+    // accelerationHandler(eventData.acceleration, "moAccel");
     accelerationHandler(
       eventData.accelerationIncludingGravity,
       "moAccelGrav",

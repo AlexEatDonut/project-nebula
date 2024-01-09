@@ -21,3 +21,24 @@ Made for SAE 4.02, MMI Angoulême.
 I do NOT recommand right now. I will take my time making it adaptable for you, and my code requires optimization.
 If you think you can do a better job, do it, if you think you can't, then wait for a better option.
 There might be a better option already.
+
+That being said, I will still include the code to get it up and running :
+
+Code to add to your HTML
+
+    <section id="parrallaxd" class="fullContainer standBy">
+        <div id="background" class="layer-0"></div>
+        <div id="item-1" class="item layer-1">
+          <img src="./assets/maps/ctf_2fort/deck1.png" class="bridge" />
+        </div>
+        <div id="item-2" class="item layer-2">
+          <img src="./assets/maps/ctf_2fort/bridge.png" class="blubuilding" />
+        </div>
+        <div id="item-3" class="item layer-3">
+          <img src="./assets/maps/ctf_2fort/redfort.png" class="bridge" />
+        </div>
+      </section>
+
+The Js script you'll need is :
+
+    https://raw.githubusercontent.com/AlexEatDonut/teufort_parrallaxd/main/assets/script/parrallaxd.js
