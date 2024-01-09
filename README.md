@@ -42,3 +42,8 @@ Code to add to your HTML
 The Js script you'll need to download and use locally is :
 
     https://raw.githubusercontent.com/AlexEatDonut/teufort_parrallaxd/main/assets/script/parrallaxd.js
+
+And you'll need the requirements :
+
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.3/TweenMax.min.js"></script>
