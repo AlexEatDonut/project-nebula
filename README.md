@@ -26,16 +26,16 @@ That being said, I will still include the code to get it up and running :
 
 Code to add to your HTML
 
-    <section id="parrallaxd" class="fullContainer standBy">
-        <div id="background" class="layer-0"></div>
+    <section id="parrallaxd" class="">
+        <div id="" class="layer-0"></div>
         <div id="item-1" class="item layer-1">
-          <img src="./assets/maps/ctf_2fort/deck1.png" class="bridge" />
+          <img src="" class="" />
         </div>
         <div id="item-2" class="item layer-2">
-          <img src="./assets/maps/ctf_2fort/bridge.png" class="blubuilding" />
+          <img src="" class="" />
         </div>
         <div id="item-3" class="item layer-3">
-          <img src="./assets/maps/ctf_2fort/redfort.png" class="bridge" />
+          <img src="" class="" />
         </div>
       </section>
 
